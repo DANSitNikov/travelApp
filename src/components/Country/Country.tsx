@@ -1,3 +1,4 @@
+import './Country.scss'
 import {
     useParams
 } from 'react-router-dom'

@@ -1,8 +1,10 @@
-function Main() {
+import './Footer.scss'
+
+function Footer() {
 
     return(
         <footer className='footer'>Footer</footer>
     )
 }
 
-export default Main;
+export default Footer;
