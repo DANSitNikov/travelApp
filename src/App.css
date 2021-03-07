@@ -1,0 +1,24 @@
+html {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    height: 100px;
+    background-color: rgb(5, 73, 112);
+}
+
+.footer {
+    height: 100px;
+    background-color: rgb(5, 73, 112);
+}
+
+.mainPage {
+    height: 500px;
+    background-color: rgb(15, 136, 206);
+}
+
+.countryPage {
+    height: 500px;
+    background-color: rgb(15, 136, 206);
+}
