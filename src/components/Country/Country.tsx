@@ -2,6 +2,7 @@ import './Country.scss'
 import {
     useParams
 } from 'react-router-dom'
+import TimeWidget from '../TimeWidget'
 
 interface Props {
     code: string
@@ -10,8 +11,10 @@ interface Props {
 function Country() {
     const { code }: Props = useParams();
 
-    return(
-        <div className='countryPage'>Test country with code: {code}</div>
+    return (
+        <div className='countryPage'>Test country with code: {code}
+            <TimeWidget offset={+9} />
+        </div>
     )
 }
 
