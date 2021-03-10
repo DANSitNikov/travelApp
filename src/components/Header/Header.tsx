@@ -1,4 +1,4 @@
-import React, {MouseEventHandler, useEffect, useState} from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import style from './Header.module.scss';
 import SearchCountry from "./searchCountry/SearchCountry";
