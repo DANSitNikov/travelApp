@@ -1,15 +1,17 @@
 import React, {useEffect, useRef} from "react";
 import style from './searchCountry.module.scss';
+import {changeInputValue} from "../../../reducers/searchReducer";
 
-const SearchCountry = () => {
-  const inputValue = useRef<HTMLInputElement>(null);
+const SearchCountry: React.FC<any> = (props) => {
+  const { inputValue } = props;
+  const inputValueLocal = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const keyboardHandler = (e: KeyboardEvent) => {
       const { key } = e;
       if (key === 'Enter') {
-        if (inputValue && inputValue.current) {
-          console.log(inputValue.current.value);
+        if (inputValueLocal && inputValueLocal.current) {
+          props.changeInputValue(inputValueLocal.current.value);
         }
       }
     };
@@ -22,21 +24,22 @@ const SearchCountry = () => {
   });
 
   const cleanContent = () => {
-    if (inputValue && inputValue.current) {
-      inputValue.current.value = '';
+    if (inputValueLocal && inputValueLocal.current) {
+      inputValueLocal.current.value = '';
+      props.changeInputValue(inputValueLocal.current.value);
     }
   };
 
   const searchCountry = () => {
-    if (inputValue && inputValue.current) {
-      console.log(inputValue.current.value);
+    if (inputValueLocal && inputValueLocal.current) {
+      props.changeInputValue(inputValueLocal.current.value);
     }
   };
 
   return (
     <div className={style.searchCountry}>
       <div className={style.inputValue}>
-        <input autoComplete='off' ref={inputValue} type="text" autoFocus={true} placeholder="something here" />
+        <input onChange={searchCountry} autoComplete='off' ref={inputValueLocal} type="text" autoFocus={true} placeholder="something here" />
         <span onClick={cleanContent} className={style.deleteValue}>X</span>
       </div>
       <button onClick={searchCountry} className={style.acceptValue}>Search country</button>

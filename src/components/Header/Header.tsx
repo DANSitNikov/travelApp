@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import style from './Header.module.scss';
-import SearchCountry from "./searchCountry/SearchCountry";
 import SelectLang from "./selectLang/SelectLang";
+import SearchCountryContainer from "./searchCountry/searchCountryContainer";
 
 const Header = () => {
   const [closeStatus, setStatus] = useState(false);
@@ -14,7 +14,7 @@ const Header = () => {
     return(
         <header className={style.header}>
             <Link to="/">Back to main page</Link>
-            {!closeStatus && <SearchCountry />}
+            {!closeStatus && <SearchCountryContainer />}
             <SelectLang />
             <button onClick={closeIt}>cleaning</button>
         </header>
