@@ -12,14 +12,13 @@ const Main: React.FC = () => {
   return (
     <div className='Main'>
       {countriesArray.map((el: any, i: number) => {
-        console.log(el);
-
         return (
           <CountryCard
             countryName={el.name}
             countyImage={el.mainImage}
             countyDescr={el.shortDescription}
             countyId={el._id}
+            countryCode={el.alpha3Code}
             key={i}
           />
         );

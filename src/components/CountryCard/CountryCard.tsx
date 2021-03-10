@@ -12,7 +12,12 @@ import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
 
 const CountryCard: React.FC<any> = (props) => {
-  const { countryName, countyImage, countyDescr, countyId } = props;
+  const {
+    countryName,
+    countyImage,
+    countyDescr,
+    countryCode,
+  } = props;
 
   const useStyles = makeStyles((theme) => ({
     root: {
@@ -41,7 +46,7 @@ const CountryCard: React.FC<any> = (props) => {
   return (
     <div className='CountryCard'>
       <Card className={classes.root}>
-        <Link to={`/country/${countyId}`}>
+        <Link to={`/country/${countryCode}`}>
           <CardHeader title={countryName} />
         </Link>
 
