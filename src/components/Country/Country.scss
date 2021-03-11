@@ -1,4 +1,26 @@
 .countryPage {
     height: 500px;
-    background-color: rgb(15, 136, 206);
+    background-color: white;
+    padding-top: 30px;
+}
+
+.countryName {
+    text-align: center;
+}
+
+.countryBody {
+    margin: 0 auto;
+    width: 80%;
+    display: flex;
+}
+
+.contentSelector {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 150px;
+}
+
+.countryContent {
+    margin: 0 auto;
 }
