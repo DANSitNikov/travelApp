@@ -4,35 +4,37 @@ import './Header.scss';
 import { MenuItem, FormControl, Select } from '@material-ui/core';
 
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  fetchCountries,
-  fetchRuCountries,
-} from '../../actions/countriesActions';
+import { fetchCountries } from '../../actions/countriesActions';
 import { setLanguage } from '../../actions/appActions';
+import { Dispatch } from 'redux';
+
+import { RootState } from '../../types';
 
 const Header: React.FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<Dispatch<any>>();
 
-  const lang = useSelector((state: any) => {
+  const lang: string = useSelector((state: RootState) => {
     return state.app.lang;
   });
 
   useEffect(() => {
     switch (lang) {
       case 'EN':
-        dispatch(fetchCountries());
+        dispatch(fetchCountries('countries'));
         break;
       case 'RU':
-        dispatch(fetchRuCountries());
+        dispatch(fetchCountries('countries_ru'));
         break;
       default:
-        dispatch(fetchCountries());
+        dispatch(fetchCountries('countries'));
         break;
     }
   }, [lang, dispatch]);
 
-  const handleLangChange = (event: any) => {
-    dispatch(setLanguage(event.target.value));
+  const handleLangChange = (
+    event: React.ChangeEvent<{ value: unknown }>,
+  ) => {
+    dispatch(setLanguage(event.target.value as string));
   };
 
   return (

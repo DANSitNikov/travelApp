@@ -1,11 +1,13 @@
-const initialState = {
+import { AppTypes } from '../types';
+
+const initialState: AppTypes = {
   lang: 'EN',
 };
 
 export const appReducer = (
-  state: any = initialState,
-  action: any,
-): any => {
+  state: AppTypes = initialState,
+  action: { type: 'SET_LANGUAGE'; payload: string },
+): AppTypes => {
   switch (action.type) {
     case 'SET_LANGUAGE':
       return {

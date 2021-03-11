@@ -1,27 +1,28 @@
+import React from 'react';
 import './Country.scss';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-
-interface Props {
-  code: string;
-}
+import { CountryTypes, RootState } from '../../types';
 
 function Country() {
-  const { code }: Props = useParams();
-  const [countryName, setCountryName] = useState('');
-  const countriesArray = useSelector((state: any) => {
-    return state.countries.countriesArray;
+  const { code } = useParams<{ code: string }>();
+
+  const [countryName, setCountryName] = useState<string>('');
+
+  const countriesArray = useSelector((state: RootState) => {
+    return state.countries;
   });
 
   useEffect(() => {
-    const currentCoutry = countriesArray.filter((el: any) => {
+    const currentCoutry:
+      | CountryTypes
+      | undefined = countriesArray.find((el: CountryTypes) => {
       return el.alpha3Code === code;
     });
-    if (!currentCoutry.length) {
-      return;
+    if (currentCoutry) {
+      setCountryName(currentCoutry.name);
     }
-    setCountryName(currentCoutry[0].name);
   }, [countriesArray, code]);
 
   return (

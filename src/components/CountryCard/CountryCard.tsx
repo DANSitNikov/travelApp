@@ -1,8 +1,6 @@
 import React from 'react';
 import './CountryCard.scss';
-
 import { Link } from 'react-router-dom';
-
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -11,7 +9,14 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
 
-const CountryCard: React.FC<any> = (props) => {
+interface PropTypes {
+  countryName: string;
+  countyImage: string;
+  countyDescr: string;
+  countryCode: string;
+}
+
+const CountryCard: React.FC<PropTypes> = (props) => {
   const {
     countryName,
     countyImage,

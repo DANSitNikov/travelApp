@@ -1,27 +1,17 @@
-export const fetchCountries = () => {
-  return async (dispatch: any) => {
-    try {
-      const response = await fetch(
-        'https://newcountyapi.herokuapp.com/countries',
-      );
-      const result = await response.json();
-      dispatch({ type: 'FETCH_COUNTRIES', payload: result });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-};
+import { CountryThunk } from '../types';
 
-export const fetchRuCountries = () => {
-  return async (dispatch: any) => {
+export const FETCH_COUNTRIES = 'FETCH_COUNTRIES';
+
+export const fetchCountries = (url: string): CountryThunk => {
+  return async (dispatch) => {
     try {
-      const response = await fetch(
-        'https://newcountyapi.herokuapp.com/countries_ru',
+      const response: Response = await fetch(
+        `https://newcountyapi.herokuapp.com/${url}`,
       );
-      const result = await response.json();
-      dispatch({ type: 'FETCH_RU_COUNTRIES', payload: result });
+      const result: Response = await response.json();
+      dispatch({ type: FETCH_COUNTRIES, payload: result });
     } catch (error) {
-      console.log(error);
+      console.log(error as Error);
     }
   };
 };

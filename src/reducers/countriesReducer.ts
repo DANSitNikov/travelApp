@@ -1,22 +1,14 @@
-const initialState = {
-  countriesArray: [],
-};
+import { CountryTypes } from '../types';
+
+const initialState: Array<CountryTypes> = [];
 
 export const countriesReducer = (
-  state: any = initialState,
-  action: any,
-): any => {
+  state: Array<CountryTypes> = initialState,
+  action: { type: 'FETCH_COUNTRIES'; payload: Array<CountryTypes> },
+): Array<CountryTypes> => {
   switch (action.type) {
     case 'FETCH_COUNTRIES':
-      return {
-        ...state,
-        countriesArray: action.payload,
-      };
-    case 'FETCH_RU_COUNTRIES':
-      return {
-        ...state,
-        countriesArray: action.payload,
-      };
+      return action.payload;
     default:
       return state;
   }
