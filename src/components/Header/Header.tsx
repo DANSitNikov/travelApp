@@ -1,64 +1,41 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import style from './Header.module.scss';
 import SelectLang from "./selectLang/SelectLang";
 import SearchCountryContainer from "./searchCountry/searchCountryContainer";
-import {useDispatch, useSelector} from "react-redux";
-import {Dispatch} from "redux";
-import {RootState} from "../../types";
-import {fetchCountries} from "../../actions/countriesActions";
-import {setLanguage} from "../../actions/appActions";
-import {FormControl, MenuItem, Select} from "@material-ui/core";
+import {createStyles, FormControl, MenuItem, Select} from "@material-ui/core";
+import Grid from "@material-ui/core/Grid";
+import makeStyles from "@material-ui/core/styles/makeStyles";
+
+const useStyles = makeStyles(() =>
+  createStyles({
+    root: {
+      textAlign: 'center',
+      marginBottom: 30,
+    },
+  }),
+);
 
 const Header = () => {
   const [closeStatus, setStatus] = useState(false);
-
-
-  const dispatch = useDispatch<Dispatch<any>>();
-
-  const lang: string = useSelector((state: RootState) => {
-    return state.app.lang;
-  });
-
-  useEffect(() => {
-    switch (lang) {
-      case 'EN':
-        dispatch(fetchCountries('countries'));
-        break;
-      case 'RU':
-        dispatch(fetchCountries('countries_ru'));
-        break;
-      default:
-        dispatch(fetchCountries('countries'));
-        break;
-    }
-  }, [lang, dispatch]);
-
-  const handleLangChange = (
-    event: React.ChangeEvent<{ value: unknown }>,
-  ) => {
-    dispatch(setLanguage(event.target.value as string));
-  };
-
+  const classes = useStyles();
 
   const closeIt = () => {
     setStatus(!closeStatus);
   };
 
     return(
-        <header className={style.header}>
-            <Link to="/">Back to main page</Link>
+        <Grid container className={classes.root}>
+          <Grid item xs={1}>
+            <Link to="/"><img width="50px" height="50px" src="https://image.flaticon.com/icons/png/512/1841/1841630.png" alt="home page"/></Link>
+          </Grid>
+          <Grid item xs={10}>
             {!closeStatus && <SearchCountryContainer />}
-
-            <FormControl className='Header__language-selector'>
-              <Select value={lang} onChange={handleLangChange} displayEmpty>
-                <MenuItem value={'EN'}>EN</MenuItem>
-                <MenuItem value={'RU'}>RU</MenuItem>
-              </Select>
-            </FormControl>
-
-            <button onClick={closeIt}>cleaning</button>
-        </header>
+          </Grid>
+          <Grid item xs={1}>
+            <SelectLang />
+          </Grid>
+          {/*<button onClick={closeIt}>cleaning</button>*/}
+        </Grid>
     );
 };
 

@@ -8,24 +8,37 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
-import './App.css';
+import {Container, createStyles} from "@material-ui/core";
+import makeStyles from "@material-ui/core/styles/makeStyles";
+
+const useStyles = makeStyles(() =>
+  createStyles({
+    root: {
+      paddingTop: 20,
+      paddingBottom: 20,
+      minHeight: '100vh',
+    },
+  }),
+);
 
 const App: React.FC = () => {
+  const classes = useStyles();
+
   return (
-    <div className='App'>
-      <Router>
-        <Header />
-        <Switch>
-          <Route path='/country/:code'>
-            <Country />
-          </Route>
-          <Route path='/'>
-            <Main />
-          </Route>
-        </Switch>
-        <Footer />
-      </Router>
-    </div>
+      <Container maxWidth="lg" className={classes.root}>
+        <Router>
+          <Header />
+          <Switch>
+            <Route path='/country/:code'>
+              <Country />
+            </Route>
+            <Route path='/'>
+              <Main />
+            </Route>
+          </Switch>
+          <Footer />
+        </Router>
+      </Container>
   );
 };
 
