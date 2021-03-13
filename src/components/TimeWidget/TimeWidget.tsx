@@ -2,7 +2,8 @@ import './TimeWidget.scss'
 import React, { useEffect, useState } from 'react'
 
 interface Props {
-    offset: number
+    offset: number,
+    language: string
 }
 
 interface capitalTime {
@@ -10,18 +11,25 @@ interface capitalTime {
     minutes: number | string
     seconds: number | string
     day: number | string
-    month: number | string
-    year: number | string
+    month: number
+    dayOfTheWeek: number
+}
+
+interface monthDayNames {
+    monthNames: [string, string, string, string, string, string, string, string, string, string, string, string],
+    dayNames: [string, string, string, string, string, string, string]
 }
 
 const TimeWidget: React.FC<Props> = (props) => {
+
+    const [monthDayNames, setMonthDayNames] = useState<monthDayNames>()
     const [capitalTime, setCapitalTime] = useState<capitalTime>({
         hours: 0,
         minutes: 0,
         seconds: 0,
         day: 0,
         month: 0,
-        year: 0,
+        dayOfTheWeek: 0,
     })
 
     useEffect(() => {
@@ -35,23 +43,20 @@ const TimeWidget: React.FC<Props> = (props) => {
             let minutes: number | string = correctDate.getMinutes()
             let seconds: number | string = correctDate.getSeconds()
             let day: number | string = correctDate.getDate()
-            let month: number | string = correctDate.getMonth() + 1
-            let year: number | string = correctDate.getFullYear()
+            let dayOfTheWeek: number = correctDate.getDay()
+            let month: number = correctDate.getMonth()
 
             if (hours < 10) {
                 hours = '0' + hours
             }
             if (minutes < 10) {
-                minutes = '0' + hours
+                minutes = '0' + minutes
             }
             if (seconds < 10) {
                 seconds = '0' + seconds
             }
             if (day < 10) {
                 day = '0' + day
-            }
-            if (month < 9) {
-                month = '0' + month
             }
 
             setCapitalTime({
@@ -60,9 +65,37 @@ const TimeWidget: React.FC<Props> = (props) => {
                 seconds,
                 day,
                 month,
-                year,
+                dayOfTheWeek
             })
         }, 500)
+        switch (props.language) {
+            case 'RU':
+                console.log('1')
+                setMonthDayNames({
+                    monthNames: ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октяря', 'ноября', 'декабря'],
+                    dayNames: ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота']
+                }
+                )
+
+                break
+            case 'EN':
+                setMonthDayNames(
+                    {
+                        monthNames: ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'],
+                        dayNames: ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
+                    }
+                )
+
+                break
+            case 'ES':
+                setMonthDayNames(
+                    {
+                        monthNames: ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'],
+                        dayNames: ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado']
+                    }
+                )
+                break
+        }
         return (
             () => clearInterval(timer)
         )
@@ -71,10 +104,9 @@ const TimeWidget: React.FC<Props> = (props) => {
 
     return (
         <div className='time_widget_body'>
-            <h2>Time and date in the capital of country</h2>
             {`${capitalTime.hours}:${capitalTime.minutes}:${capitalTime.seconds}`}
             <br />
-            {`${capitalTime.day}.${capitalTime.month}.${capitalTime.year}`}
+            {`${capitalTime.day} ${monthDayNames?.monthNames[capitalTime.month]}, ${monthDayNames?.dayNames[capitalTime.dayOfTheWeek]}`}
         </div>
     )
 }

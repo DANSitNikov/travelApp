@@ -13,7 +13,7 @@ function Country() {
 
     return (
         <div className='countryPage'>Test country with code: {code}
-            <TimeWidget offset={+9} />
+            <TimeWidget offset={+9} language={'ES'} />
         </div>
     )
 }
