@@ -11,21 +11,21 @@ const useStyles = makeStyles(() =>
     root: {
       textAlign: 'center',
       alignItems: 'center',
-      backgroundColor: 'white',
       position: 'fixed',
       padding: '10px 0',
       bottom: 0,
+      backgroundColor: 'rgba(255,255,255,0.8)',
     },
     gitHubs: {
       justifyContent: 'space-around',
     },
     iconButton: {
       padding: 0,
-    }
+    },
   })
 );
 
-const Footer = () => {
+const Footer: React.FC = () => {
   const classes = useStyles();
 
   return (
@@ -37,34 +37,34 @@ const Footer = () => {
         </Grid>
         <Grid item container xs={6} sm={5} className={classes.gitHubs}>
           <Grid item>
-            <Tooltip title="Daniil's Git">
+            <Tooltip title="Stanislav">
               <IconButton className={classes.iconButton}>
-                <a href="https://github.com/DANSitNikov" target="_blank">
+                <a href="https://github.com/Demanikys" target="_blank">
                   <GitHubIcon color="error"/>
                 </a>
               </IconButton>
             </Tooltip>
           </Grid>
           <Grid item>
-            <Tooltip title="Daniil's Git">
+            <Tooltip title="Bogdan">
               <IconButton className={classes.iconButton}>
-                <a href="https://github.com/DANSitNikov" target="_blank">
+                <a href="https://github.com/Bogdan-101" target="_blank">
                   <GitHubIcon color="action"/>
                 </a>
               </IconButton>
             </Tooltip>
           </Grid>
           <Grid item>
-            <Tooltip title="Daniil's Git">
+            <Tooltip title="Alexei">
               <IconButton className={classes.iconButton}>
-                <a href="https://github.com/DANSitNikov" target="_blank">
+                <a href="https://github.com/AlexBibig" target="_blank">
                   <GitHubIcon color="primary"/>
                 </a>
               </IconButton>
             </Tooltip>
           </Grid>
           <Grid item>
-            <Tooltip title="Daniil's Git">
+            <Tooltip title="Daniil">
               <IconButton className={classes.iconButton}>
                 <a href="https://github.com/DANSitNikov" target="_blank">
                   <GitHubIcon color="secondary"/>

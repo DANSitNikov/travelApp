@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme: Theme) =>
       padding: '2px 4px',
       display: 'flex',
       alignItems: 'center',
-      maxWidth: 300,
+      maxWidth: 280,
       margin: '0 auto',
       height: 35,
     },
@@ -26,7 +26,6 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     divider: {
       height: 28,
-      margin: 4,
     },
   }),
 );
@@ -40,9 +39,7 @@ const SearchCountry: React.FC<any> = (props) => {
     const keyboardHandler = (e: KeyboardEvent) => {
       const {key} = e;
       if (key === 'Enter') {
-        if (inputValueLocal && inputValueLocal.current) {
-          props.changeInputValue(inputValueLocal.current.value);
-        }
+        e.preventDefault();
       }
     };
 
@@ -79,9 +76,7 @@ const SearchCountry: React.FC<any> = (props) => {
 
       <IconButton
         onClick={cleanContent}
-        type="submit"
         className={classes.iconButton}
-        aria-label="search"
       >
         <CloseIcon/>
       </IconButton>

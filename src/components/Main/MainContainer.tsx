@@ -5,14 +5,14 @@ import {connect} from "react-redux";
 const mapStateToProps = (state: any) => ({
   inputValue: state.search.inputValue,
   data: [
-    {id: 1, country: 'Germany'},
-    {id: 2, country: 'China'},
-    {id: 3, country: 'Italy'},
-    {id: 4, country: 'Japan'},
-    {id: 5, country: 'USA'},
-    {id: 6, country: 'Canada'},
-    {id: 7, country: 'Brazil'},
-    {id: 8, country: 'Norway'},
+    {id: 1, country: 'Germany', capital: 'Berlin'},
+    {id: 2, country: 'China', capital: 'Peking'},
+    {id: 3, country: 'Italy', capital: 'Rome'},
+    {id: 4, country: 'Japan', capital: 'Tokyo'},
+    {id: 5, country: 'USA', capital: 'Washington'},
+    {id: 6, country: 'Canada', capital: 'Ottawa'},
+    {id: 7, country: 'Brazil', capital: 'Brasilia'},
+    {id: 8, country: 'Norway', capital: 'Oslo'},
   ],
 });
 

@@ -14,8 +14,12 @@ const useStyles = makeStyles({
   },
 });
 
-const CountryCard: React.FC<any> = (props) => {
-  const { countryName } = props;
+type card = {
+  countryName: string,
+  countryCapital: string,
+}
+
+const CountryCard = ({countryName, countryCapital}: card) => {
   const classes = useStyles();
 
   return (
@@ -28,8 +32,10 @@ const CountryCard: React.FC<any> = (props) => {
         />
         <CardContent>
           <Typography gutterBottom variant="h6" component="h2">
-            Country: {countryName} <br/>
-            Capital: London
+            Country: {countryName}
+          </Typography>
+          <Typography variant="h6" component="h2">
+            Capital: {countryCapital}
           </Typography>
         </CardContent>
       </CardActionArea>

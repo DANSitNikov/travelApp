@@ -1,25 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import SelectLang from "./selectLang/SelectLang";
 import SearchCountryContainer from "./searchCountry/searchCountryContainer";
-import {createStyles, FormControl, MenuItem, Select} from "@material-ui/core";
+import {createStyles} from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 
 const useStyles = makeStyles(() =>
   createStyles({
     root: {
-      marginBottom: 30,
-      justifyContent: 'space-between',
+      justifyContent: 'center',
       alignItems: 'center',
       position: 'fixed',
       top: 0,
       padding: '10px 5px',
-      backgroundColor: 'white',
+      backgroundColor: 'rgba(255,255,255,0.8)',
       zIndex: 10,
     },
     selectItem: {
       textAlign: 'right',
+   //   visibility: 'hidden',      transfer this parameter to global state!!!!
     },
     logo: {
       justifyContent: 'space-around',
@@ -30,16 +30,11 @@ const useStyles = makeStyles(() =>
 );
 
 const Header = () => {
-  const [closeStatus, setStatus] = useState(false);
   const classes = useStyles();
 
-  const closeIt = () => {
-    setStatus(!closeStatus);
-  };
-
     return(
-        <Grid container className={classes.root} spacing={1}>
-          <Grid container item sm={3} xs={4} className={classes.logo}>
+        <Grid container className={classes.root}>
+          <Grid container item sm={6} xs={4} className={classes.logo}>
             <Grid item sm={2} xs={6}>
               <Link to="/"><img width="40px" height="40px" src="https://image.flaticon.com/icons/png/512/1841/1841630.png" alt="home page"/></Link>
             </Grid>
@@ -47,10 +42,9 @@ const Header = () => {
               <SelectLang />
             </Grid>
           </Grid>
-          <Grid item sm={9} xs={8} className={classes.selectItem}>
-            {!closeStatus && <SearchCountryContainer />}
+          <Grid item sm={6} xs={8} className={classes.selectItem}>
+            <SearchCountryContainer />
           </Grid>
-          {/*<button onClick={closeIt}>cleaning</button>*/}
         </Grid>
     );
 };

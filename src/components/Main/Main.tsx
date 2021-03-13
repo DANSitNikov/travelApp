@@ -16,6 +16,10 @@ const useStyles = makeStyles(() =>
     },
     card: {
       textAlign: 'left',
+    },
+    cardHref: {
+      textDecoration: 'none !important',
+
     }
   }),
 );
@@ -24,12 +28,12 @@ const Main: React.FC<any> = (props) => {
   const { data, inputValue } = props;
   const classes = useStyles();
 
-  const cards = data.map((card: { id: number, country: string }) => {
-    if (card.country.toLowerCase().includes(inputValue)) {
+  const cards = data.map((card: { id: number, country: string, capital: string }) => {
+    if (card.country.toLowerCase().includes(inputValue) || card.capital.toLowerCase().includes(inputValue)) {
       return (
-        <Grid item xs={12} sm={6} md={3} className={classes.card}>
-            <Link to={"country/" + card.id}>
-              <CountryCard countryName={card.country}/>
+        <Grid key={card.id} item xs={12} sm={6} md={3} className={classes.card}>
+            <Link to={"country/" + card.id} className={classes.cardHref}>
+              <CountryCard countryName={card.country} countryCapital={card.capital}/>
             </Link>
         </Grid>
       );
