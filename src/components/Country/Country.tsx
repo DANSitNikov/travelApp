@@ -48,6 +48,7 @@ const CountryContent = ({ type, country }: ContentProps) => {
                     url={country?.mainVideo}
                     controls={true}
                     volume={0.5}
+                    light={true}
                 />
             )
             break;
