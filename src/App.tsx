@@ -10,13 +10,14 @@ import {
 } from 'react-router-dom';
 import {Container, createStyles} from "@material-ui/core";
 import makeStyles from "@material-ui/core/styles/makeStyles";
+import BackgroundImage from "./components/BackgroundImage/BackgroundImage";
 
 const useStyles = makeStyles(() =>
   createStyles({
     root: {
       paddingTop: 20,
-      paddingBottom: 20,
-      minHeight: '100vh',
+      overflowX: 'hidden',
+      position: 'relative',
     },
   }),
 );
@@ -25,7 +26,8 @@ const App: React.FC = () => {
   const classes = useStyles();
 
   return (
-      <Container maxWidth="lg" className={classes.root}>
+      <div className={classes.root}>
+        <BackgroundImage />
         <Router>
           <Header />
           <Switch>
@@ -38,7 +40,7 @@ const App: React.FC = () => {
           </Switch>
           <Footer />
         </Router>
-      </Container>
+      </div>
   );
 };
 

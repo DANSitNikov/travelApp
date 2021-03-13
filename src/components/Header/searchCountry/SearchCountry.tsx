@@ -13,9 +13,9 @@ const useStyles = makeStyles((theme: Theme) =>
       padding: '2px 4px',
       display: 'flex',
       alignItems: 'center',
-      width: 300,
-      marginLeft: 'auto',
-      marginRight: 'auto',
+      maxWidth: 300,
+      margin: '0 auto',
+      height: 35,
     },
     input: {
       marginLeft: theme.spacing(1),
@@ -38,7 +38,7 @@ const SearchCountry: React.FC<any> = (props) => {
 
   useEffect(() => {
     const keyboardHandler = (e: KeyboardEvent) => {
-      const { key } = e;
+      const {key} = e;
       if (key === 'Enter') {
         if (inputValueLocal && inputValueLocal.current) {
           props.changeInputValue(inputValueLocal.current.value);
@@ -67,38 +67,38 @@ const SearchCountry: React.FC<any> = (props) => {
   };
 
   return (
-      <Paper component="form" className={classes.root}>
-        <Input
-          onChange={searchCountry}
-          autoComplete='off'
-          inputRef={inputValueLocal}
-          type="text"
-          autoFocus={true}
-          placeholder="something here"
-        />
+    <Paper component="form" className={classes.root}>
+      <Input
+        onChange={searchCountry}
+        autoComplete='off'
+        inputRef={inputValueLocal}
+        type="text"
+        autoFocus={true}
+        placeholder="search country"
+      />
 
-        <IconButton
-          onClick={cleanContent}
-          type="submit"
-          className={classes.iconButton}
-          aria-label="search"
-        >
-          <CloseIcon />
-        </IconButton>
+      <IconButton
+        onClick={cleanContent}
+        type="submit"
+        className={classes.iconButton}
+        aria-label="search"
+      >
+        <CloseIcon/>
+      </IconButton>
 
-        <Divider
-          className={classes.divider}
-          orientation="vertical"
-        />
+      <Divider
+        className={classes.divider}
+        orientation="vertical"
+      />
 
-        <IconButton
-          color="primary"
-          className={classes.iconButton}
-          aria-label="directions"
-        >
-          <SearchIcon />
-        </IconButton>
-      </Paper>
+      <IconButton
+        color="primary"
+        className={classes.iconButton}
+        aria-label="directions"
+      >
+        <SearchIcon/>
+      </IconButton>
+    </Paper>
   );
 };
 

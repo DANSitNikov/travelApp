@@ -4,14 +4,18 @@ import CountryCard from "./cards/Card";
 import {createStyles} from "@material-ui/core";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import Grid from "@material-ui/core/Grid";
+import Container from "@material-ui/core/Container";
 
 const useStyles = makeStyles(() =>
   createStyles({
     root: {
       flexGrow: 1,
+      width: '100% !important',
+      marginTop: '80px',
+      marginBottom: '100px',
     },
     card: {
-      textAlign: 'center',
+      textAlign: 'left',
     }
   }),
 );
@@ -33,11 +37,11 @@ const Main: React.FC<any> = (props) => {
   });
 
   return (
-    <div className={classes.root}>
+    <Container className={classes.root}>
       <Grid container spacing={6}>
         {cards}
       </Grid>
-    </div>
+    </Container>
   );
 }
 

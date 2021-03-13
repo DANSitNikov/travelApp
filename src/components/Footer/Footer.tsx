@@ -10,11 +10,17 @@ const useStyles = makeStyles(() =>
   createStyles({
     root: {
       textAlign: 'center',
-      marginTop: 50,
       alignItems: 'center',
+      backgroundColor: 'white',
+      position: 'fixed',
+      padding: '10px 0',
+      bottom: 0,
     },
     gitHubs: {
       justifyContent: 'space-around',
+    },
+    iconButton: {
+      padding: 0,
     }
   })
 );
@@ -24,15 +30,15 @@ const Footer = () => {
 
   return (
       <Grid container className={classes.root}>
-        <Grid item xs>
+        <Grid item xs={3} sm={4}>
           <a href="https://rs.school/js/" target="_blank">
-            <img width="100px" height="80px" src="https://rs.school/images/rs_school_js.svg" alt="rsSchool"/>
+            <img width="70px" height="40px" src="https://rs.school/images/rs_school_js.svg" alt="rsSchool"/>
           </a>
         </Grid>
-        <Grid item container xs className={classes.gitHubs}>
+        <Grid item container xs={6} sm={5} className={classes.gitHubs}>
           <Grid item>
             <Tooltip title="Daniil's Git">
-              <IconButton>
+              <IconButton className={classes.iconButton}>
                 <a href="https://github.com/DANSitNikov" target="_blank">
                   <GitHubIcon color="error"/>
                 </a>
@@ -41,7 +47,7 @@ const Footer = () => {
           </Grid>
           <Grid item>
             <Tooltip title="Daniil's Git">
-              <IconButton>
+              <IconButton className={classes.iconButton}>
                 <a href="https://github.com/DANSitNikov" target="_blank">
                   <GitHubIcon color="action"/>
                 </a>
@@ -50,7 +56,7 @@ const Footer = () => {
           </Grid>
           <Grid item>
             <Tooltip title="Daniil's Git">
-              <IconButton>
+              <IconButton className={classes.iconButton}>
                 <a href="https://github.com/DANSitNikov" target="_blank">
                   <GitHubIcon color="primary"/>
                 </a>
@@ -59,7 +65,7 @@ const Footer = () => {
           </Grid>
           <Grid item>
             <Tooltip title="Daniil's Git">
-              <IconButton>
+              <IconButton className={classes.iconButton}>
                 <a href="https://github.com/DANSitNikov" target="_blank">
                   <GitHubIcon color="secondary"/>
                 </a>
@@ -67,7 +73,7 @@ const Footer = () => {
             </Tooltip>
           </Grid>
         </Grid>
-        <Grid item xs>
+        <Grid item xs={3} sm={3}>
           <p>2021</p>
         </Grid>
       </Grid>
