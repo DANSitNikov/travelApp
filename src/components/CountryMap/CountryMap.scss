@@ -1,0 +1,49 @@
+.country_map{
+    width: 500px;
+    min-height: 400px;
+    position: relative;
+}
+
+.map_container{
+    min-height: 400px;
+    height: 100%;
+    z-index: 5;
+}
+
+.map_fullscreen_btn{
+    width: 20px;
+    height: 20px;
+    border: solid 2px black;
+    border-radius: 50%;
+    background: rgb(0, 255, 55);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    z-index: 10;
+}
+
+.map_fullscreen_btn img{
+    height: 13px;
+    width: 13px;
+}
+
+.map_fullscreen_btn:hover{
+    cursor: pointer;
+}
+
+.map_fullscreen_btn:active{
+    transform: scale(0.95);
+}
+
+.full_screen_map{
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 30px;
+    bottom: 15px;
+    width: calc(100vw - 45px);
+    height: calc(100% - 30px);
+}
