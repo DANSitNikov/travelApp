@@ -11,6 +11,7 @@ import PhotoSizeSelectActualIcon from '@material-ui/icons/PhotoSizeSelectActual'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Loader from './Loader'
 
 type ContentProps = {
     type: number,
@@ -42,7 +43,6 @@ const CountryContent = ({ type, country }: ContentProps) => {
                     </div>
                 </div>
             )
-            break;
         }
         case 2 : {
             return (
@@ -57,7 +57,6 @@ const CountryContent = ({ type, country }: ContentProps) => {
                     />
                 </div>
             )
-            break;
         }
         case 3 : {
             const settings = {
@@ -86,7 +85,6 @@ const CountryContent = ({ type, country }: ContentProps) => {
                     </div>
                 </div>
             )
-            break;
         }
         default: {
             return (
@@ -127,7 +125,7 @@ function Country() {
               <button onClick={() => {setContent(3)}}><PhotoSizeSelectActualIcon /></button>
           </div>
           {!countryInfo ?
-              <h2 className='loading'>Loading...</h2> :
+              <Loader/>:
               <div className='countryContent'>
                   <div className='widgets'></div>
                   <h2 className='countryName'>
