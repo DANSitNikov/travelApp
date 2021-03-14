@@ -80,6 +80,11 @@ button:focus {
     margin: 100px auto;
 }
 
+.slider {
+    width: 68vw;
+    margin: 0 auto;
+}
+
 .countryInfo p {
     margin-bottom: 20px;
     border-left: 4px solid #00b7ff;
@@ -110,10 +115,8 @@ button:focus {
 }
 
 .attractionBlock {
-    margin-bottom: 50px;
+    margin: 50px 0;
     padding: 10px;
-    border: 2px solid grey;
-    border-radius: 20px;
 }
 
 .attractionBlock img {

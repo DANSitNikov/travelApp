@@ -8,6 +8,9 @@ import ReactPlayer from "react-player";
 import InfoIcon from '@material-ui/icons/Info';
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import PhotoSizeSelectActualIcon from '@material-ui/icons/PhotoSizeSelectActual';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 type ContentProps = {
     type: number,
@@ -57,20 +60,30 @@ const CountryContent = ({ type, country }: ContentProps) => {
             break;
         }
         case 3 : {
+            const settings = {
+                dots: true,
+                infinite: true,
+                speed: 500,
+                slidesToShow: 1,
+                slidesToScroll: 1
+            };
             return (
-                <div className='attractions'>
-                    {!country ? <div>Loading...</div> : <p></p>}
-                    {country?.attractions.map((elem, index) => {
-                        return (
-                            <div className='attractionBlock'>
-                                <div>
-                                    <p>{elem.title}</p>
-                                    <img src={elem.image} alt={elem.title + ' photo'}/>
-                                </div>
-                                <p>{elem.description}</p>
-                            </div>
-                        )
-                    })}
+                <div>
+                    <div className='slider'>
+                        <Slider {...settings}>
+                            {country?.attractions.map((elem, index) => {
+                                return (
+                                    <div className='attractionBlock'>
+                                        <div>
+                                            <p style={{marginBottom: '25px'}}>{elem.title}</p>
+                                            <img src={elem.image} alt={elem.title + ' photo'} style={{margin: '0 auto', width: '46vw'}}/>
+                                        </div>
+                                        <p>{elem.description}</p>
+                                    </div>
+                                )
+                            })}
+                        </Slider>
+                    </div>
                 </div>
             )
             break;
