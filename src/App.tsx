@@ -8,25 +8,12 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
-import {Container, createStyles} from "@material-ui/core";
-import makeStyles from "@material-ui/core/styles/makeStyles";
 import BackgroundImage from "./components/BackgroundImage/BackgroundImage";
-
-const useStyles = makeStyles(() =>
-  createStyles({
-    root: {
-      paddingTop: 20,
-      overflowX: 'hidden',
-      position: 'relative',
-    },
-  }),
-);
+import style from './App.module.scss';
 
 const App: React.FC = () => {
-  const classes = useStyles();
-
   return (
-      <div className={classes.root}>
+      <div className={style.app}>
         <BackgroundImage />
         <Router>
           <Header />

@@ -1,0 +1,20 @@
+.searchCountry {
+  padding: 2px 4px;
+  display: flex;
+  align-items: center;
+  max-width: 280px;
+  margin: 0 auto;
+  height: 35px;
+
+  .input {
+    flex: 1;
+  }
+
+  .iconButton {
+    padding: 10px;
+  }
+
+  .divider{
+    height: 20px;
+  }
+}

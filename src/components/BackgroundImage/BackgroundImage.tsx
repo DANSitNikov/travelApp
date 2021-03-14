@@ -9,38 +9,44 @@ import {useEffect, useRef} from "react";
 const useStyles = makeStyles(() =>
   createStyles({
     root: {
-      backgroundSize: 'cover',
       backgroundPosition: 'center center',
       minWidth: '100vw',
       minHeight: '100vh',
       position: 'fixed',
       top: 0,
       left: 0,
-      backgroundRepeat: 'no-repeat',
       zIndex: -5,
     },
     shadow: {
       width: '100vw',
       height: '100vh',
-      backgroundColor: 'rgba(0, 0, 0, 0.4)',
+      backgroundColor: 'rgba(0, 0, 0, 0.7)',
     },
     plain: {
       backgroundImage: `url(${plain})`,
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: 'cover',
     },
     human: {
       backgroundImage: `url(${human})`,
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: 'cover',
     },
     balloons: {
       backgroundImage: `url(${balloons})`,
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: 'cover',
     },
     friends: {
       backgroundImage: `url(${friends})`,
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: 'cover',
     },
   }),
 );
 
 const chooseImage = (): number => {
-  return Math.ceil(Math.random() * 4);
+  return Math.floor(Math.random() * 4);
 };
 
 const BackgroundImage = () => {

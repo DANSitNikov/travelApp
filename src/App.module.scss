@@ -2,7 +2,9 @@
 @import url("~react-image-gallery/styles/css/image-gallery.css");
 
 
-.App {
-  height: 100vh;
+.app {
+  min-height: 100vh;
   font-family: Rubik;
+  position: relative;
+  overflow-x: hidden;
 }

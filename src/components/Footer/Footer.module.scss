@@ -1,0 +1,17 @@
+.footer {
+  text-align: center;
+  align-items: center;
+  position: absolute;
+  padding: 10px 0;
+  bottom: 0;
+  background-color: rgba(27, 27, 27, 0.7);
+  color: white;
+
+  .gitHubs {
+    justify-content: space-around;
+  }
+
+  .iconButton {
+    padding: 0;
+  }
+}

@@ -1,39 +1,14 @@
 import React, {useEffect, useRef} from "react";
-import {createStyles, Input, Theme} from "@material-ui/core";
+import {Input} from "@material-ui/core";
 import CloseIcon from '@material-ui/icons/Close';
 import SearchIcon from '@material-ui/icons/Search';
 import IconButton from "@material-ui/core/IconButton";
 import Divider from "@material-ui/core/Divider";
 import Paper from "@material-ui/core/Paper";
-import makeStyles from "@material-ui/core/styles/makeStyles";
-
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      padding: '2px 4px',
-      display: 'flex',
-      alignItems: 'center',
-      maxWidth: 280,
-      margin: '0 auto',
-      height: 35,
-    },
-    input: {
-      marginLeft: theme.spacing(1),
-      flex: 1,
-    },
-    iconButton: {
-      padding: 10,
-    },
-    divider: {
-      height: 28,
-    },
-  }),
-);
-
+import style from './SearchCountry.module.scss';
 
 const SearchCountry: React.FC<any> = (props) => {
   const inputValueLocal = useRef<HTMLInputElement>(null);
-  const classes = useStyles();
 
   useEffect(() => {
     const keyboardHandler = (e: KeyboardEvent) => {
@@ -64,7 +39,7 @@ const SearchCountry: React.FC<any> = (props) => {
   };
 
   return (
-    <Paper component="form" className={classes.root}>
+    <Paper component="form" className={style.searchCountry}>
       <Input
         onChange={searchCountry}
         autoComplete='off'
@@ -76,19 +51,19 @@ const SearchCountry: React.FC<any> = (props) => {
 
       <IconButton
         onClick={cleanContent}
-        className={classes.iconButton}
+        className={style.iconButton}
       >
         <CloseIcon/>
       </IconButton>
 
       <Divider
-        className={classes.divider}
+        className={style.divider}
         orientation="vertical"
       />
 
       <IconButton
         color="primary"
-        className={classes.iconButton}
+        className={style.iconButton}
         aria-label="directions"
       >
         <SearchIcon/>
