@@ -20,8 +20,12 @@ const CountryContent = ({ type, country }: ContentProps) => {
         case 1 : {
             return (
                 <div>
-                    <p>General info</p>
                     <div className='countryInfoBlock'>
+                        <img
+                            src={country?.mainImage}
+                            alt={country?.alpha3Code + ' photo'}
+                            className='countryPhoto'
+                        />
                         <div className='infoBlock'>
                             <div className='countryInfo'>
                                 <p>Capital: {country?.capital}</p>
@@ -32,11 +36,6 @@ const CountryContent = ({ type, country }: ContentProps) => {
                                 {country?.shortDescription}
                             </div>
                         </div>
-                        <img
-                            src={country?.mainImage}
-                            alt={country?.alpha3Code + ' photo'}
-                            className='countryPhoto'
-                        />
                     </div>
                 </div>
             )
@@ -44,12 +43,16 @@ const CountryContent = ({ type, country }: ContentProps) => {
         }
         case 2 : {
             return (
-                <ReactPlayer
-                    url={country?.mainVideo}
-                    controls={true}
-                    volume={0.5}
-                    light={true}
-                />
+                <div className='youtube'>
+                    <ReactPlayer
+                        url={country?.mainVideo}
+                        controls={true}
+                        volume={0.5}
+                        light={true}
+                        width={'50vw'}
+                        height={'28.12vw'}
+                    />
+                </div>
             )
             break;
         }
@@ -110,12 +113,17 @@ function Country() {
               <button onClick={() => {setContent(2)}}><PlayCircleOutlineIcon /></button>
               <button onClick={() => {setContent(3)}}><PhotoSizeSelectActualIcon /></button>
           </div>
-          <div className='countryContent'>
-              <h2 className='countryName'>
-                  {countryInfo ? ('This is ' + countryInfo.name) : 'Loading...'}.
-              </h2>
-              <CountryContent type={content} country={countryInfo}/>
-          </div>
+          {!countryInfo ?
+              <h2 className='loading'>Loading...</h2> :
+              <div className='countryContent'>
+                  <div className='widgets'></div>
+                  <h2 className='countryName'>
+                      {countryInfo && countryInfo.name.length <= 8 ? countryInfo.name : countryInfo?.alpha3Code}
+                  </h2>
+                  <div className='countryFlex'>
+                      <CountryContent type={content} country={countryInfo}/>
+                  </div>
+              </div>}
       </div>
     </div>
   );

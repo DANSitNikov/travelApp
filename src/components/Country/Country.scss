@@ -1,6 +1,7 @@
 .countryPage {
     background-color: white;
-    padding-top: 30px;
+    padding-top: 15px;
+    height: 100%;
 }
 
 button {
@@ -12,8 +13,30 @@ button:focus {
     outline: none;
 }
 
+.loading {
+    width: 100%;
+    text-align: center;
+    height: 55vw;
+}
+
+.widgets {
+    height: 80px;
+    background: red;
+}
+
+.countryFlex {
+    display: flex;
+    justify-content: space-between;
+}
+
 .countryName {
-    margin-bottom: 5%;
+    transform: rotateZ(180deg);
+    font-size: 9vw;
+    color: #6b7094;
+    position: absolute;
+    right: 0;
+    top: 11vh;
+    writing-mode: vertical-rl;
 }
 
 .countryBody {
@@ -27,19 +50,21 @@ button:focus {
     flex-direction: column;
     justify-content: space-between;
     height: 150px;
+    align-self: center;
 }
 
 .countryContent {
     width: 90%;
     padding-left: 5%;
     margin: 0 auto 50px;
+    height: 55vw;
 }
 
 .countryInfoBlock {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    margin-block: 50px;
+    margin-block: 25px;
 }
 
 .infoBlock {
@@ -51,18 +76,26 @@ button:focus {
 
 }
 
+.youtube {
+    margin: 100px auto;
+}
+
 .countryInfo p {
     margin-bottom: 20px;
     border-left: 4px solid #00b7ff;
+    border-bottom: 4px solid #00b7ff;
+    border-radius: 5px;
     padding-left: 10px;
 }
 
 .countryPhoto {
-    width: 300px;
+    width: 35vw;
+    margin: 0 auto 25px;
+    border-radius: 5px;
 }
 
 .shortDesc {
-    width: 40%;
+    width: 77%;
 }
 
 .attractions {
