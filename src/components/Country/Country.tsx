@@ -8,6 +8,7 @@ import ReactPlayer from "react-player";
 import InfoIcon from '@material-ui/icons/Info';
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import PhotoSizeSelectActualIcon from '@material-ui/icons/PhotoSizeSelectActual';
+import CurrencyWidget from '../CurrencyWidget'
 
 type ContentProps = {
     type: number,
@@ -20,6 +21,7 @@ const CountryContent = ({ type, country }: ContentProps) => {
         case 1: {
             return (
                 <div>
+                    <CurrencyWidget currency={'JPY'} />
                     <p>General info</p>
                     <div className='countryInfoBlock'>
                         <div className='infoBlock'>
