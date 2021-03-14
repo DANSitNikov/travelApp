@@ -10,7 +10,7 @@ const useStyles = makeStyles(() =>
   createStyles({
     root: {
       flexGrow: 1,
-      width: '100% !important',
+      width: '100%',
       marginTop: '80px',
       marginBottom: '100px',
     },
@@ -18,8 +18,7 @@ const useStyles = makeStyles(() =>
       textAlign: 'left',
     },
     cardHref: {
-      textDecoration: 'none !important',
-
+      textDecoration: 'none',
     }
   }),
 );
