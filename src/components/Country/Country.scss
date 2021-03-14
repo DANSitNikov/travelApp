@@ -1,7 +1,7 @@
 .countryPage {
     background-color: white;
     padding-top: 15px;
-    height: 119%;
+    min-height: calc(100vh - 20%);
 }
 
 button {
@@ -58,7 +58,6 @@ button:focus {
     width: 90%;
     padding-left: 5%;
     margin: 0 auto 50px;
-    height: 55vw;
 }
 
 .countryInfoBlock {
@@ -116,8 +115,8 @@ button:focus {
 }
 
 .attractionBlock {
-    margin: 50px 0;
-    padding: 10px;
+    margin: 0;
+    padding: 25px 10px 10px 10px;
 }
 
 .attractionBlock img {

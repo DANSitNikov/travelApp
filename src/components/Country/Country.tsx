@@ -19,7 +19,6 @@ type ContentProps = {
 }
 
 const CountryContent = ({ type, country }: ContentProps) => {
-    console.log(country)
     switch (type) {
         case 1 : {
             return (
@@ -75,9 +74,12 @@ const CountryContent = ({ type, country }: ContentProps) => {
                                     <div className='attractionBlock'>
                                         <div>
                                             <p style={{marginBottom: '25px'}}>{elem.title}</p>
-                                            <img src={elem.image} alt={elem.title + ' photo'} style={{margin: '0 auto', width: '46vw'}}/>
+                                            <img src={elem.image} alt={elem.title + ' photo'}
+                                                 style={{margin: '0 auto', width: '46vw'}}
+                                            />
+                                            <br/>
+                                            <p>{elem.description}</p>
                                         </div>
-                                        <p>{elem.description}</p>
                                     </div>
                                 )
                             })}
@@ -114,7 +116,6 @@ function Country() {
     if (currentCountry) {
       setCountryInfo(currentCountry);
     }
-      console.log(currentCountry);
   }, [countriesArray, code]);
     return (
     <div className='countryPage'>
