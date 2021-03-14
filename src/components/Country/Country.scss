@@ -1,4 +1,98 @@
 .countryPage {
-    height: 500px;
-    background-color: rgb(15, 136, 206);
+    background-color: white;
+    padding-top: 30px;
+}
+
+button {
+    background: none;
+    border: none;
+}
+
+button:focus {
+    outline: none;
+}
+
+.countryName {
+    margin-bottom: 5%;
+}
+
+.countryBody {
+    margin: 0 auto;
+    width: 80%;
+    display: flex;
+}
+
+.contentSelector {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 150px;
+}
+
+.countryContent {
+    width: 90%;
+    padding-left: 5%;
+    margin: 0 auto 50px;
+}
+
+.countryInfoBlock {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-block: 50px;
+}
+
+.infoBlock {
+    display: flex;
+    justify-content: space-between;
+}
+
+.countryInfo {
+
+}
+
+.countryInfo p {
+    margin-bottom: 20px;
+    border-left: 4px solid #00b7ff;
+    padding-left: 10px;
+}
+
+.countryPhoto {
+    width: 300px;
+}
+
+.shortDesc {
+    width: 40%;
+}
+
+.attractions {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.attractions > div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.attractionBlock {
+    margin-bottom: 50px;
+    padding: 10px;
+    border: 2px solid grey;
+    border-radius: 20px;
+}
+
+.attractionBlock img {
+    width: 350px;
+}
+
+.attractionBlock p:nth-child(1) {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.attractionBlock > p {
+    padding: 15px;
+    font-size: 18px;
 }

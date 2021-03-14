@@ -4,33 +4,120 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { CountryTypes, RootState } from '../../types';
+import ReactPlayer from "react-player";
+import InfoIcon from '@material-ui/icons/Info';
+import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
+import PhotoSizeSelectActualIcon from '@material-ui/icons/PhotoSizeSelectActual';
+
+type ContentProps = {
+    type: number,
+    country: CountryTypes | undefined
+}
+
+const CountryContent = ({ type, country }: ContentProps) => {
+    console.log(country)
+    switch (type) {
+        case 1: {
+            return (
+                <div>
+                    <p>General info</p>
+                    <div className='countryInfoBlock'>
+                        <div className='infoBlock'>
+                            <div className='countryInfo'>
+                                <p>Capital: {country?.capital}</p>
+                                <p>Population: {country?.population}</p>
+                                <p>Region: {country?.region}</p>
+                            </div>
+                            <div className='shortDesc'>
+                                {country?.shortDescription}
+                            </div>
+                        </div>
+                        <img
+                            src={country?.mainImage}
+                            alt={country?.alpha3Code + ' photo'}
+                            className='countryPhoto'
+                        />
+                    </div>
+                </div>
+            )
+            break;
+        }
+        case 2: {
+            return (
+                <ReactPlayer
+                    url={country?.mainVideo}
+                    controls={true}
+                    volume={0.5}
+                />
+            )
+            break;
+        }
+        case 3: {
+            return (
+                <div className='attractions'>
+                    {!country ? <div>Loading...</div> : <p></p>}
+                    {country?.attractions.map((elem, index) => {
+                        return (
+                            <div className='attractionBlock'>
+                                <div>
+                                    <p>{elem.title}</p>
+                                    <img src={elem.image} alt={elem.title + ' photo'} />
+                                </div>
+                                <p>{elem.description}</p>
+                            </div>
+                        )
+                    })}
+                </div>
+            )
+            break;
+        }
+        default: {
+            return (
+                <h1>Sorry, something went wrong</h1>
+            )
+        }
+    }
+}
 
 function Country() {
-  const { code } = useParams<{ code: string }>();
+    const { code } = useParams<{ code: string }>();
 
-  const [countryName, setCountryName] = useState<string>('');
+    const [countryInfo, setCountryInfo] = useState<CountryTypes>();
 
-  const countriesArray = useSelector((state: RootState) => {
-    return state.countries;
-  });
-
-  useEffect(() => {
-    const currentCoutry:
-      | CountryTypes
-      | undefined = countriesArray.find((el: CountryTypes) => {
-      return el.alpha3Code === code;
+    const countriesArray = useSelector((state: RootState) => {
+        return state.countries;
     });
-    if (currentCoutry) {
-      setCountryName(currentCoutry.name);
-    }
-  }, [countriesArray, code]);
 
-  return (
-    <div className='countryPage'>
-      Test country with code: {code}
-      <p>{countryName}</p>
-    </div>
-  );
+    const [content, setContent] = useState(1);
+
+    useEffect(() => {
+        const currentCountry:
+            | CountryTypes
+            | undefined = countriesArray.find((el: CountryTypes) => {
+                return el.alpha3Code === code;
+            });
+        if (currentCountry) {
+            setCountryInfo(currentCountry);
+        }
+        console.log(currentCountry);
+    }, [countriesArray, code]);
+    return (
+        <div className='countryPage'>
+            <div className='countryBody'>
+                <div className='contentSelector'>
+                    <button onClick={() => { setContent(1) }}><InfoIcon /></button>
+                    <button onClick={() => { setContent(2) }}><PlayCircleOutlineIcon /></button>
+                    <button onClick={() => { setContent(3) }}><PhotoSizeSelectActualIcon /></button>
+                </div>
+                <div className='countryContent'>
+                    <h2 className='countryName'>
+                        {countryInfo ? ('This is ' + countryInfo.name) : 'Loading...'}.
+              </h2>
+                    <CountryContent type={content} country={countryInfo} />
+                </div>
+            </div>
+        </div>
+    );
 }
 
 export default Country;
