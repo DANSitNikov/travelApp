@@ -34,7 +34,7 @@ const SearchCountry: React.FC<any> = (props) => {
 
   const searchCountry = () => {
     if (inputValueLocal && inputValueLocal.current) {
-      props.changeInputValue(inputValueLocal.current.value);
+      props.changeInputValue(inputValueLocal.current.value.toLowerCase());
     }
   };
 
