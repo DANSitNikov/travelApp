@@ -14,6 +14,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Loader from './Loader'
 import CountryMap from '../CountryMap'
 import TimeWidget from '../TimeWidget'
+import WeatherWidet from '../WeatherWidget'
 
 type ContentProps = {
     type: number,
@@ -138,6 +139,7 @@ function Country() {
                     <div className='countryContent'>
                         <div className='widgets'>
                             <TimeWidget offset={countryInfo.timezone} language={pageLang} />
+                            <WeatherWidet city={countryInfo.capital} language={pageLang} />
                         </div>
                         <h2 className='countryName'>
                             {countryInfo && countryInfo.name.length <= 8 ? countryInfo.name : countryInfo?.alpha3Code}

@@ -21,6 +21,8 @@ button:focus {
 
 .widgets {
     height: 80px;
+    display: flex;
+    justify-content: space-around;
     background: red;
 }
 
