@@ -15,6 +15,7 @@ import Loader from './Loader'
 import CountryMap from '../CountryMap'
 import TimeWidget from '../TimeWidget'
 import WeatherWidet from '../WeatherWidget'
+import CurrencyWidget from '../CurrencyWidget'
 
 type ContentProps = {
     type: number,
@@ -139,6 +140,7 @@ function Country() {
                     <div className='countryContent'>
                         <div className='widgets'>
                             <TimeWidget offset={countryInfo.timezone} language={pageLang} />
+                            <CurrencyWidget currency={countryInfo.currency} />
                             <WeatherWidet city={countryInfo.capital} language={pageLang} />
                         </div>
                         <h2 className='countryName'>

@@ -1,0 +1,16 @@
+.currency_widget{
+    color: white;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.currency_widget table{
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.currency_widget table td{
+    border: 2px solid #00b7ff;
+    padding: 3px;
+}

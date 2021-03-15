@@ -36,6 +36,7 @@ export interface CountryTypes {
   capitalMarker: Array<Number>;
   geo: any;
   timezone: number;
+  currency: string;
   region: string;
   population: number;
   mainImage: string;
