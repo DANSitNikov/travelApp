@@ -1,7 +1,8 @@
 .country_map{
-    width: 500px;
+    width: 100%;
     min-height: 400px;
     position: relative;
+    margin: 0 auto;
 }
 
 .map_container{
@@ -39,11 +40,11 @@
 }
 
 .full_screen_map{
-    position: absolute;
-    top: 15px;
+    position: fixed;
+    top: 70px;
     left: 15px;
-    right: 30px;
-    bottom: 15px;
+    right: 20px;
+    bottom: 75px;
     width: calc(100vw - 45px);
-    height: calc(100% - 30px);
+    height: calc(100% - 145px);
 }

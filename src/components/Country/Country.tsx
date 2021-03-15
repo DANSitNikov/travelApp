@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from 'react';
 import './Country.scss';
 import { useParams } from 'react-router-dom';
@@ -14,14 +13,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Loader from './Loader'
 import CountryMap from '../CountryMap'
-// import countryGeo from '../CountryMap/DEU.geo.json'
-=======
-import './Country.scss'
-import {
-    useParams
-} from 'react-router-dom'
 import TimeWidget from '../TimeWidget'
->>>>>>> time-widget
 
 type ContentProps = {
     type: number,
@@ -50,7 +42,7 @@ const CountryContent = ({ type, country }: ContentProps) => {
                                 {country?.shortDescription}
                             </div>
                         </div>
-                        {/* <CountryMap capitalGeo={[52.50, 13.38]} capitalName='Berlin' countryGeo={countryGeo} /> */}
+                        <CountryMap capitalGeo={country?.capitalMarker} capitalName={country?.capital} countryGeo={country?.geo} />
                     </div>
                 </div>
             )
@@ -111,6 +103,10 @@ const CountryContent = ({ type, country }: ContentProps) => {
 function Country() {
     const { code } = useParams<{ code: string }>();
 
+    const [pageLang, setPageLang] = useState(useSelector((state: RootState) => {
+        return state.app.lang;
+    }))
+
     const [countryInfo, setCountryInfo] = useState<CountryTypes>();
 
     const countriesArray = useSelector((state: RootState) => {
@@ -119,7 +115,6 @@ function Country() {
 
     const [content, setContent] = useState(1);
 
-<<<<<<< HEAD
     useEffect(() => {
         const currentCountry:
             | CountryTypes
@@ -141,7 +136,9 @@ function Country() {
                 {!countryInfo ?
                     <Loader /> :
                     <div className='countryContent'>
-                        <div className='widgets'></div>
+                        <div className='widgets'>
+                            <TimeWidget offset={countryInfo.timezone} language={pageLang} />
+                        </div>
                         <h2 className='countryName'>
                             {countryInfo && countryInfo.name.length <= 8 ? countryInfo.name : countryInfo?.alpha3Code}
                         </h2>
@@ -152,13 +149,6 @@ function Country() {
             </div>
         </div>
     );
-=======
-    return (
-        <div className='countryPage'>Test country with code: {code}
-            <TimeWidget offset={+9} language={'ES'} />
-        </div>
-    )
->>>>>>> time-widget
 }
 
 export default Country;

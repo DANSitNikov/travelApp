@@ -104,9 +104,12 @@ const TimeWidget: React.FC<Props> = (props) => {
 
     return (
         <div className='time_widget_body'>
-            {`${capitalTime.hours}:${capitalTime.minutes}:${capitalTime.seconds}`}
-            <br />
-            {`${capitalTime.day} ${monthDayNames?.monthNames[capitalTime.month]}, ${monthDayNames?.dayNames[capitalTime.dayOfTheWeek]}`}
+            <div className='time'>
+                {`${capitalTime.hours}:${capitalTime.minutes}:${capitalTime.seconds}`}
+            </div>
+            <div>
+                {`${capitalTime.day} ${monthDayNames?.monthNames[capitalTime.month]}, ${monthDayNames?.dayNames[capitalTime.dayOfTheWeek]}`}
+            </div>
         </div>
     )
 }

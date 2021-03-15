@@ -6,7 +6,7 @@ import { MapContainer, TileLayer, Marker, Popup, GeoJSON } from 'react-leaflet'
 
 interface Props {
     capitalGeo: Array,
-    capitalName: string,
+    capitalName: string | undefined,
     countryGeo: Array
 }
 
