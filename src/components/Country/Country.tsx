@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react';
 import './Country.scss';
 import { useParams } from 'react-router-dom';
@@ -14,6 +15,13 @@ import "slick-carousel/slick/slick-theme.css";
 import Loader from './Loader'
 import CountryMap from '../CountryMap'
 // import countryGeo from '../CountryMap/DEU.geo.json'
+=======
+import './Country.scss'
+import {
+    useParams
+} from 'react-router-dom'
+import TimeWidget from '../TimeWidget'
+>>>>>>> time-widget
 
 type ContentProps = {
     type: number,
@@ -111,6 +119,7 @@ function Country() {
 
     const [content, setContent] = useState(1);
 
+<<<<<<< HEAD
     useEffect(() => {
         const currentCountry:
             | CountryTypes
@@ -143,6 +152,13 @@ function Country() {
             </div>
         </div>
     );
+=======
+    return (
+        <div className='countryPage'>Test country with code: {code}
+            <TimeWidget offset={+9} language={'ES'} />
+        </div>
+    )
+>>>>>>> time-widget
 }
 
 export default Country;
