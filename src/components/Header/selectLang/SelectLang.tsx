@@ -22,6 +22,9 @@ const SelectLang = () => {
       case 'RU':
         dispatch(fetchCountries('countries_ru'));
         break;
+      case 'ES':
+        dispatch(fetchCountries('countries_es'));
+        break;
       default:
         dispatch(fetchCountries('countries'));
         break;
@@ -39,6 +42,7 @@ const SelectLang = () => {
       <Select className={style.select} value={lang} onChange={handleLangChange} displayEmpty>
         <MenuItem value={'EN'}>EN</MenuItem>
         <MenuItem value={'RU'}>RU</MenuItem>
+        <MenuItem value={'ES'}>ES</MenuItem>
       </Select>
     </FormControl>
   );

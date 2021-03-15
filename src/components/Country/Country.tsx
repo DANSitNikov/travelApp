@@ -8,6 +8,7 @@ import ReactPlayer from "react-player";
 import InfoIcon from '@material-ui/icons/Info';
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import PhotoSizeSelectActualIcon from '@material-ui/icons/PhotoSizeSelectActual';
+import {changeVisibilityToFalse} from "../../reducers/searchReducer";
 
 type ContentProps = {
     type: number,
@@ -79,8 +80,9 @@ const CountryContent = ({ type, country }: ContentProps) => {
     }
 }
 
-function Country() {
+const Country: React.FC<any> = (props) => {
   const { code } = useParams<{ code: string }>();
+  const { changeVisibilityToFalse } = props;
 
   const [countryInfo, setCountryInfo] = useState<CountryTypes>();
 
@@ -91,6 +93,7 @@ function Country() {
   const [content, setContent] = useState(1);
 
   useEffect(() => {
+    changeVisibilityToFalse();
     const currentCountry:
       | CountryTypes
       | undefined = countriesArray.find((el: CountryTypes) => {

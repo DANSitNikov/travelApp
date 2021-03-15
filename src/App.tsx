@@ -1,7 +1,6 @@
 import React from 'react';
 import Main from './components/Main';
 import Country from './components/Country';
-import Header from './components/Header';
 import Footer from './components/Footer';
 import {
   BrowserRouter as Router,
@@ -10,16 +9,18 @@ import {
 } from 'react-router-dom';
 import BackgroundImage from "./components/BackgroundImage/BackgroundImage";
 import style from './App.module.scss';
+import HeaderContainer from "./components/Header/HeaderContainer";
+import CountryContainer from "./components/Country/CountryContainer";
 
 const App: React.FC = () => {
   return (
       <div className={style.app}>
         <BackgroundImage />
         <Router>
-          <Header />
+          <HeaderContainer />
           <Switch>
             <Route path='/country/:code'>
-              <Country />
+              <CountryContainer />
             </Route>
             <Route path='/'>
               <Main />
