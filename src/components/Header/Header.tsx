@@ -1,54 +1,26 @@
-import React, { useEffect } from 'react';
+import React from "react";
+import { Link } from "react-router-dom";
+import SelectLang from "./selectLang/SelectLang";
+import SearchCountryContainer from "./searchCountry/searchCountryContainer";
+import Grid from "@material-ui/core/Grid";
+import style from './Header.module.scss';
 
-import './Header.scss';
-import { MenuItem, FormControl, Select } from '@material-ui/core';
-
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchCountries } from '../../actions/countriesActions';
-import { setLanguage } from '../../actions/appActions';
-import { Dispatch } from 'redux';
-
-import { RootState } from '../../types';
-
-const Header: React.FC = () => {
-  const dispatch = useDispatch<Dispatch<any>>();
-
-  const lang: string = useSelector((state: RootState) => {
-    return state.app.lang;
-  });
-
-  useEffect(() => {
-    switch (lang) {
-      case 'EN':
-        dispatch(fetchCountries('countries'));
-        break;
-      case 'RU':
-        dispatch(fetchCountries('countries_ru'));
-        break;
-      default:
-        dispatch(fetchCountries('countries'));
-        break;
-    }
-  }, [lang, dispatch]);
-
-  const handleLangChange = (
-    event: React.ChangeEvent<{ value: unknown }>,
-  ) => {
-    dispatch(setLanguage(event.target.value as string));
-  };
-
-  return (
-    <header className='Header'>
-      <p>Header</p>
-
-      <FormControl className='Header__language-selector'>
-        <Select value={lang} onChange={handleLangChange} displayEmpty>
-          <MenuItem value={'EN'}>EN</MenuItem>
-          <MenuItem value={'RU'}>RU</MenuItem>
-        </Select>
-      </FormControl>
-    </header>
-  );
+const Header = () => {
+    return(
+        <Grid container className={style.header}>
+          <Grid container item sm={6} xs={4} className={style.logoAndLang}>
+            <Grid item sm={2} xs={6}>
+              <Link to="/"><img width="40px" height="40px" src="https://image.flaticon.com/icons/png/512/1841/1841630.png" alt="home page"/></Link>
+            </Grid>
+            <Grid item sm={1} xs={6}>
+              <SelectLang />
+            </Grid>
+          </Grid>
+          <Grid item sm={6} xs={8} className={style.selectItem}>
+            <SearchCountryContainer />
+          </Grid>
+        </Grid>
+    );
 };
 
 export default Header;
