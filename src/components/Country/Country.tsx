@@ -8,7 +8,6 @@ import ReactPlayer from "react-player";
 import InfoIcon from '@material-ui/icons/Info';
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import PhotoSizeSelectActualIcon from '@material-ui/icons/PhotoSizeSelectActual';
-import {changeVisibilityToFalse} from "../../reducers/searchReducer";
 
 type ContentProps = {
     type: number,
