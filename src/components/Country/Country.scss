@@ -1,7 +1,19 @@
 .countryPage {
     background-color: white;
-    padding-top: 3%;
+    padding-top: 8%;
     min-height: calc(100vh - 20%);
+}
+
+.mapAndDesc {
+    padding-left: 50px;
+    width: 77%;
+}
+
+.map {
+    background: red;
+    height: 300px;
+    margin-bottom: 50px;
+    border-radius: 20px;
 }
 
 button {
@@ -34,7 +46,7 @@ button:focus {
     font-size: 9vw;
     color: #6b7094;
     position: absolute;
-    right: 0%;
+    right: -7%;
     top: 11vh;
     writing-mode: vertical-rl;
 }
@@ -100,7 +112,7 @@ button:focus {
 }
 
 .shortDesc {
-    width: 77%;
+    margin-bottom: 50px;
 }
 
 .attractions {
