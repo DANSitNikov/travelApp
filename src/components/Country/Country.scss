@@ -33,7 +33,9 @@ button:focus {
 
 .widgets {
     height: 80px;
-    background: red;
+    display: flex;
+    justify-content: space-around;
+    background: rgba(27, 27, 27, 0.7);
 }
 
 .countryFlex {

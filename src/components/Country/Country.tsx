@@ -12,6 +12,10 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Loader from './Loader'
+import CountryMap from '../CountryMap'
+import TimeWidget from '../TimeWidget'
+import WeatherWidet from '../WeatherWidget'
+import CurrencyWidget from '../CurrencyWidget'
 
 type ContentProps = {
     type: number,
@@ -19,8 +23,9 @@ type ContentProps = {
 }
 
 const CountryContent = ({ type, country }: ContentProps) => {
+    console.log(country)
     switch (type) {
-        case 1 : {
+        case 1: {
             return (
                 <div>
                     <div className='countryInfoBlock'>
@@ -44,11 +49,12 @@ const CountryContent = ({ type, country }: ContentProps) => {
                                 </div>
                             </div>
                         </div>
+                        <CountryMap capitalGeo={country?.capitalMarker} capitalName={country?.capital} countryGeo={country?.geo} />
                     </div>
                 </div>
             )
         }
-        case 2 : {
+        case 2: {
             return (
                 <div className='youtube'>
                     <ReactPlayer
@@ -62,7 +68,7 @@ const CountryContent = ({ type, country }: ContentProps) => {
                 </div>
             )
         }
-        case 3 : {
+        case 3: {
             const settings = {
                 dots: true,
                 infinite: true,
@@ -78,11 +84,11 @@ const CountryContent = ({ type, country }: ContentProps) => {
                                 return (
                                     <div className='attractionBlock'>
                                         <div>
-                                            <p style={{marginBottom: '25px'}}>{elem.title}</p>
+                                            <p style={{ marginBottom: '25px' }}>{elem.title}</p>
                                             <img src={elem.image} alt={elem.title + ' photo'}
-                                                 style={{margin: '0 auto', width: '46vw'}}
+                                                style={{ margin: '0 auto', width: '46vw' }}
                                             />
-                                            <br/>
+                                            <br />
                                             <p>{elem.description}</p>
                                         </div>
                                     </div>
@@ -102,48 +108,52 @@ const CountryContent = ({ type, country }: ContentProps) => {
 }
 
 function Country() {
-  const { code } = useParams<{ code: string }>();
+    const { code } = useParams<{ code: string }>();
 
-  const [countryInfo, setCountryInfo] = useState<CountryTypes>();
+    const [countryInfo, setCountryInfo] = useState<CountryTypes>();
 
-  const countriesArray = useSelector((state: RootState) => {
-    return state.countries;
-  });
-
-  const [content, setContent] = useState(1);
-
-  useEffect(() => {
-    const currentCountry:
-      | CountryTypes
-      | undefined = countriesArray.find((el: CountryTypes) => {
-      return el.alpha3Code === code;
+    const countriesArray = useSelector((state: RootState) => {
+        return state.countries;
     });
-    if (currentCountry) {
-      setCountryInfo(currentCountry);
-    }
-  }, [countriesArray, code]);
+
+    const [content, setContent] = useState(1);
+
+    useEffect(() => {
+        const currentCountry:
+            | CountryTypes
+            | undefined = countriesArray.find((el: CountryTypes) => {
+                return el.alpha3Code === code;
+            });
+        if (currentCountry) {
+            setCountryInfo(currentCountry);
+        }
+    }, [countriesArray, code]);
     return (
-    <div className='countryPage'>
-      <div className='countryBody'>
-          <div className='contentSelector'>
-              <button onClick={() => {setContent(1)}}><InfoIcon /></button>
-              <button onClick={() => {setContent(2)}}><PlayCircleOutlineIcon /></button>
-              <button onClick={() => {setContent(3)}}><PhotoSizeSelectActualIcon /></button>
-          </div>
-          {!countryInfo ?
-              <Loader/>:
-              <div className='countryContent'>
-                  <div className='widgets'></div>
-                  <h2 className='countryName'>
-                      {countryInfo && countryInfo.name.length <= 8 ? countryInfo.name : countryInfo?.alpha3Code}
-                  </h2>
-                  <div className='countryFlex'>
-                      <CountryContent type={content} country={countryInfo}/>
-                  </div>
-              </div>}
-      </div>
-    </div>
-  );
+        <div className='countryPage'>
+            <div className='countryBody'>
+                <div className='contentSelector'>
+                    <button onClick={() => { setContent(1) }}><InfoIcon /></button>
+                    <button onClick={() => { setContent(2) }}><PlayCircleOutlineIcon /></button>
+                    <button onClick={() => { setContent(3) }}><PhotoSizeSelectActualIcon /></button>
+                </div>
+                {!countryInfo ?
+                    <Loader /> :
+                    <div className='countryContent'>
+                        <div className='widgets'>
+                            <TimeWidget offset={countryInfo.timezone} />
+                            <CurrencyWidget currency={countryInfo.currency} />
+                            <WeatherWidet city={countryInfo.capital} />
+                        </div>
+                        <h2 className='countryName'>
+                            {countryInfo && countryInfo.name.length <= 8 ? countryInfo.name : countryInfo?.alpha3Code}
+                        </h2>
+                        <div className='countryFlex'>
+                            <CountryContent type={content} country={countryInfo} />
+                        </div>
+                    </div>}
+            </div>
+        </div>
+    );
 }
 
 export default Country;

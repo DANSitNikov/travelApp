@@ -33,6 +33,10 @@ export interface CountryTypes {
   _id: string;
   name: string;
   capital: string;
+  capitalMarker: Array<Number>;
+  geo: any;
+  timezone: number;
+  currency: string;
   region: string;
   population: number;
   mainImage: string;
