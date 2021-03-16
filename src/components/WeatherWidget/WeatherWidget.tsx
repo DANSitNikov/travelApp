@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 import './WeatherWidget.scss'
+import { RootState } from '../../types'
 
 
 interface weatherProps {
     city: string,
-    language: string
 }
 
 const WeatherWidget: React.FC<weatherProps> = (props) => {
@@ -12,9 +13,13 @@ const WeatherWidget: React.FC<weatherProps> = (props) => {
     const [temperature, setTemperature] = useState('')
     const [weatherDescription, setWeatherDescription] = useState('')
 
+    const lang = useSelector((state: RootState) => {
+        return state.app.lang
+    })
+
     useEffect(() => {
         async function getWeather() {
-            const url = `https://api.openweathermap.org/data/2.5/weather?q=${props.city}&lang=${props.language}&appid=55aa85f147056ca0778f19550850090c&units=metric`;
+            const url = `https://api.openweathermap.org/data/2.5/weather?q=${props.city}&lang=${lang}&appid=55aa85f147056ca0778f19550850090c&units=metric`;
             const res = await fetch(url);
             const data = await res.json();
             console.log(data.weather);

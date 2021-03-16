@@ -1,9 +1,10 @@
 import './TimeWidget.scss'
 import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../types'
 
 interface Props {
     offset: number,
-    language: string
 }
 
 interface capitalTime {
@@ -16,8 +17,8 @@ interface capitalTime {
 }
 
 interface monthDayNames {
-    monthNames: [string, string, string, string, string, string, string, string, string, string, string, string],
-    dayNames: [string, string, string, string, string, string, string]
+    monthNames: Array<string>,
+    dayNames: Array<string>
 }
 
 const TimeWidget: React.FC<Props> = (props) => {
@@ -30,6 +31,10 @@ const TimeWidget: React.FC<Props> = (props) => {
         day: 0,
         month: 0,
         dayOfTheWeek: 0,
+    })
+
+    const lang = useSelector((state: RootState) => {
+        return state.app.lang
     })
 
     useEffect(() => {
@@ -68,7 +73,7 @@ const TimeWidget: React.FC<Props> = (props) => {
                 dayOfTheWeek
             })
         }, 500)
-        switch (props.language) {
+        switch (lang) {
             case 'RU':
                 console.log('1')
                 setMonthDayNames({
@@ -99,7 +104,7 @@ const TimeWidget: React.FC<Props> = (props) => {
         return (
             () => clearInterval(timer)
         )
-    }, [])
+    }, [lang])
 
 
     return (

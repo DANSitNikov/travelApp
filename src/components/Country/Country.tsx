@@ -105,10 +105,6 @@ const CountryContent = ({ type, country }: ContentProps) => {
 function Country() {
     const { code } = useParams<{ code: string }>();
 
-    const [pageLang, setPageLang] = useState(useSelector((state: RootState) => {
-        return state.app.lang;
-    }))
-
     const [countryInfo, setCountryInfo] = useState<CountryTypes>();
 
     const countriesArray = useSelector((state: RootState) => {
@@ -139,9 +135,9 @@ function Country() {
                     <Loader /> :
                     <div className='countryContent'>
                         <div className='widgets'>
-                            <TimeWidget offset={countryInfo.timezone} language={pageLang} />
+                            <TimeWidget offset={countryInfo.timezone} />
                             <CurrencyWidget currency={countryInfo.currency} />
-                            <WeatherWidet city={countryInfo.capital} language={pageLang} />
+                            <WeatherWidet city={countryInfo.capital} />
                         </div>
                         <h2 className='countryName'>
                             {countryInfo && countryInfo.name.length <= 8 ? countryInfo.name : countryInfo?.alpha3Code}
