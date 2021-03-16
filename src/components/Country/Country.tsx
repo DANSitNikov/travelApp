@@ -35,8 +35,13 @@ const CountryContent = ({ type, country }: ContentProps) => {
                                 <p>Population: {country?.population}</p>
                                 <p>Region: {country?.region}</p>
                             </div>
-                            <div className='shortDesc'>
-                                {country?.shortDescription}
+                            <div className='mapAndDesc'>
+                                <div className='shortDesc'>
+                                    {country?.shortDescription}
+                                </div>
+                                <div className='map'>
+
+                                </div>
                             </div>
                         </div>
                     </div>
