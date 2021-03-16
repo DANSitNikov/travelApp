@@ -28,7 +28,7 @@ const WeatherWidget: React.FC<weatherProps> = (props) => {
             setWeatherDescription(`${data.weather[0].description}`)
         }
         getWeather()
-    }, [props.city])
+    }, [props.city, lang])
 
     return (
         <div className='weather_widget'>

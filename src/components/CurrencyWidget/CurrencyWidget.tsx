@@ -17,7 +17,7 @@ const CurrencyWidget: React.FC<Props> = (props) => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const data = await fetch(`https://api.exchangeratesapi.io/latest?base=${props.currency}`)
+            await fetch(`https://api.exchangeratesapi.io/latest?base=${props.currency}`)
                 .then((data) => data.json())
                 .then((data) => {
                     const infoForState = {

@@ -44,9 +44,6 @@ const CountryContent = ({ type, country }: ContentProps) => {
                                 <div className='shortDesc'>
                                     {country?.shortDescription}
                                 </div>
-                                <div className='map'>
-
-                                </div>
                             </div>
                         </div>
                         <CountryMap capitalGeo={country?.capitalMarker} capitalName={country?.capital} countryGeo={country?.geo} />

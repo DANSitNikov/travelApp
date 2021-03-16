@@ -1,6 +1,6 @@
-import React from "react";
+// import React from "react";
 import Main from "./Main";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 
 const mapStateToProps = (state: any) => ({
   inputValue: state.search.inputValue,

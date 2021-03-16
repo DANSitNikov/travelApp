@@ -104,7 +104,7 @@ const TimeWidget: React.FC<Props> = (props) => {
         return (
             () => clearInterval(timer)
         )
-    }, [lang])
+    }, [lang, props.offset])
 
 
     return (
