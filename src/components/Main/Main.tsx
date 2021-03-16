@@ -23,6 +23,7 @@ const Main: React.FC<any> = (props) => {
         </Grid>
       );
     }
+    return null
   });
 
   return (
