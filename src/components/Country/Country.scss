@@ -1,0 +1,141 @@
+.countryPage {
+    background-color: white;
+    padding-top: 8%;
+    min-height: calc(100vh - 20%);
+}
+
+.mapAndDesc {
+    padding-left: 50px;
+    width: 77%;
+}
+
+button {
+    background: none;
+    border: none;
+}
+
+button:focus {
+    outline: none;
+}
+
+.loading {
+    width: 100%;
+    text-align: center;
+    height: 55vw;
+}
+
+.widgets {
+    height: 80px;
+    display: flex;
+    justify-content: space-around;
+    background: rgba(27, 27, 27, 0.7);
+}
+
+.countryFlex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.countryName {
+    transform: rotateZ(180deg);
+    font-size: 9vw;
+    color: #6b7094;
+    position: absolute;
+    right: -7%;
+    top: 11vh;
+    writing-mode: vertical-rl;
+}
+
+.countryBody {
+    margin: 0 auto;
+    width: 80%;
+    display: flex;
+    height: 100%;
+}
+
+.contentSelector {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 150px;
+    align-self: center;
+}
+
+.countryContent {
+    width: 90%;
+    padding-left: 5%;
+    margin: 0 auto 50px;
+}
+
+.countryInfoBlock {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-block: 25px;
+}
+
+.infoBlock {
+    display: flex;
+    justify-content: space-between;
+}
+
+// .countryInfo {
+
+// }
+
+.youtube {
+    margin: 100px auto;
+}
+
+.slider {
+    width: 68vw;
+    margin: 0 auto;
+}
+
+.countryInfo p {
+    margin-bottom: 20px;
+    border-left: 4px solid #00b7ff;
+    border-bottom: 4px solid #00b7ff;
+    border-radius: 5px;
+    padding-left: 10px;
+}
+
+.countryPhoto {
+    width: 35vw;
+    margin: 0 auto 25px;
+    border-radius: 5px;
+}
+
+.shortDesc {
+    margin-bottom: 50px;
+}
+
+.attractions {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.attractions > div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.attractionBlock {
+    margin: 0;
+    padding: 25px 10px 10px 10px;
+}
+
+.attractionBlock img {
+    width: 350px;
+}
+
+.attractionBlock p:nth-child(1) {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.attractionBlock > p {
+    padding: 15px;
+    font-size: 18px;
+}
