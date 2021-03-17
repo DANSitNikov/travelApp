@@ -1,1 +1,1 @@
-export { default } from './WeatherWidget'
+export { default } from './WeatherWidget.module'

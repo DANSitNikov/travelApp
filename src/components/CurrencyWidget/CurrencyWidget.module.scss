@@ -1,0 +1,17 @@
+.currency_widget{
+    color: white;
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    table{
+        border-collapse: collapse;
+        margin: 0 auto 20px auto;
+        text-align: center;
+
+        td {
+            border: 2px solid #212020;
+            padding: 3px;
+        }
+    }
+}

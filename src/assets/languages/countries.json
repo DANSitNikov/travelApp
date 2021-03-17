@@ -4,5 +4,12 @@
   "searchCountry": "search country",
   "population": "Population",
   "region": "Region",
-  "currency": "Currency"
+  "currency": "Currency",
+  "name": "Your name",
+  "email": "Your email",
+  "password": "Password",
+  "login": "Login",
+  "register": "Register",
+  "logout": "Logout",
+  "hello": "Hello"
 }

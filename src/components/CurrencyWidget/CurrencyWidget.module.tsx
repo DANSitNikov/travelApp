@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-import './CurrencyWidget.scss'
+import style from './CurrencyWidget.module.scss'
 
 interface Props {
     currency: string,
@@ -14,7 +14,7 @@ interface Info {
 }
 
 const CurrencyWidget: React.FC<Props> = (props) => {
-    const [currencyInfo, setcurrencyInfo] = useState<Info>();
+    const [currencyInfo, setCurrencyInfo] = useState<Info>();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -32,14 +32,14 @@ const CurrencyWidget: React.FC<Props> = (props) => {
                             ? data.rates.RUB.toFixed(3)
                             : 1,
                     }
-                    setcurrencyInfo(infoForState)
+                    setCurrencyInfo(infoForState)
                 })
         }
         fetchData()
     }, [props.currency])
 
     return (
-        <div className='currency_widget'>
+        <div className={style.currency_widget}>
             <table>
                 <tr>
                     <td>{props.currencyTranslate}</td>

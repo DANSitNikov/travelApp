@@ -1,30 +1,38 @@
 import React, { useState } from 'react';
 import { registration } from '../../actions/userActions';
-import './Registration.scss';
+import style from './Registration.module.scss';
 import { useHistory } from 'react-router-dom';
+import {Button} from "@material-ui/core";
+import Input from "@material-ui/core/Input";
+import {useSelector} from "react-redux";
+import {RootState} from "../../types";
 
 const Registration = () => {
+  const language = useSelector((state: RootState) => {
+    return state.languages.data;
+  });
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const history = useHistory();
 
   return (
-    <div className='Registration'>
+    <div className={style.Registration}>
       <form>
-        <div className='input-field'>
-          <input
-            placeholder='Your name (necessarily)'
+        <div className={style.inputField}>
+          <Input
+            placeholder={language.name}
             type='text'
             value={name}
+            required={true}
             onChange={(e) => setName(e.target.value)}
           />
           <label htmlFor='email'></label>
         </div>
 
-        <div className='input-field'>
-          <input
-            placeholder='Email (necessarily)'
+        <div className={style.inputField}>
+          <Input
+            placeholder={language.email}
             type='email'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -32,9 +40,9 @@ const Registration = () => {
           <label htmlFor='email'></label>
         </div>
 
-        <div className='input-field'>
-          <input
-            placeholder='Password (necessarily)'
+        <div className={style.inputField}>
+          <Input
+            placeholder={language.password}
             type='password'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -42,8 +50,8 @@ const Registration = () => {
           <label htmlFor='email'></label>
         </div>
 
-        <button
-          className='waves-effect waves-light btn-large blue'
+        <Button
+          color='primary'
           onClick={(e) => {
             if (name.length) {
               e.preventDefault();
@@ -55,8 +63,8 @@ const Registration = () => {
             }
           }}
         >
-          Register
-        </button>
+          {language.register}
+        </Button>
       </form>
     </div>
   );

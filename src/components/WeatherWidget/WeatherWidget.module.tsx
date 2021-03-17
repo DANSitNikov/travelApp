@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import './WeatherWidget.scss'
+import style from './WeatherWidget.module.scss'
 import { RootState } from '../../types'
 
 
@@ -31,11 +31,11 @@ const WeatherWidget: React.FC<weatherProps> = (props) => {
     }, [props.city, lang])
 
     return (
-        <div className='weather_widget'>
-            <div className='weather_icon'><img src={`http://openweathermap.org/img/w/${weatherIcon}.png`} alt={weatherDescription} /></div>
-            <div className='weather_info'>
-                <div className='weather_temperature'>{temperature}°С</div>
-                <div className='weather_description'>{weatherDescription}</div>
+        <div className={style.weather_widget}>
+            <div className={style.weather_icon}><img src={`http://openweathermap.org/img/w/${weatherIcon}.png`} alt={weatherDescription} /></div>
+            <div className={style.weather_info}>
+                <div className={style.weather_temperature}>{temperature}°С</div>
+                <div className={style.weather_description}>{weatherDescription}</div>
             </div>
         </div>
     )

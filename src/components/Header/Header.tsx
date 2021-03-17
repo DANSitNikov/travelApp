@@ -5,6 +5,8 @@ import SearchCountryContainer from "./searchCountry/searchCountryContainer";
 import Grid from "@material-ui/core/Grid";
 import style from './Header.module.scss';
 import Navbar from '../Navbar';
+import {useSelector} from "react-redux";
+import {RootState} from "../../types";
 
 const Header = () => {
   return (

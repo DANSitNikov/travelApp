@@ -6,6 +6,9 @@ import {RootState} from "../../../types";
 import {fetchCountries} from "../../../actions/countriesActions";
 import {setLanguage} from "../../../actions/appActions";
 import style from './SelectLang.module.scss';
+import rus from '../../../assets/icons/russia.svg';
+import esp from '../../../assets/icons/spain.svg';
+import uk from '../../../assets/icons/uk.svg';
 
 const SelectLang = () => {
   const dispatch = useDispatch<Dispatch<any>>();
@@ -46,9 +49,15 @@ const SelectLang = () => {
   return (
     <FormControl className='Header__language-selector'>
       <Select className={style.select} value={lang} onChange={handleLangChange} displayEmpty>
-        <MenuItem value={'EN'}>EN</MenuItem>
-        <MenuItem value={'RU'}>RU</MenuItem>
-        <MenuItem value={'ES'}>ES</MenuItem>
+        <MenuItem value={'EN'}>
+          <img src={uk} alt=""/>
+        </MenuItem>
+        <MenuItem value={'RU'}>
+          <img src={rus} alt=""/>
+        </MenuItem>
+        <MenuItem value={'ES'}>
+          <img src={esp} alt=""/>
+        </MenuItem>
       </Select>
     </FormControl>
   );

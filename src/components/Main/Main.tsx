@@ -15,6 +15,7 @@ const Main: React.FC<any> = (props) => {
 
   useEffect(() => {
     changeVisibilityToTrue();
+    window.scrollTo(0, 0);
   });
 
   const sortedCountriesArray = countriesArray.sort((a, b) => b.population - a.population);

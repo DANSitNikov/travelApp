@@ -2,21 +2,27 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { login } from '../../actions/userActions';
-import { useDispatch } from 'react-redux';
-import './Login.scss';
+import {useDispatch, useSelector} from 'react-redux';
+import style from './Login.module.scss';
+import Input from "@material-ui/core/Input";
+import Button from "@material-ui/core/Button";
+import {RootState} from "../../types";
 
 const Login = () => {
+  const language = useSelector((state: RootState) => {
+    return state.languages.data;
+  });
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
   const history = useHistory();
 
   return (
-    <div className='Login'>
+    <div className={style.Login}>
       <form>
-        <div className='input-field'>
-          <input
-            placeholder='Email'
+        <div className={style.inputField}>
+          <Input
+            placeholder={language.email}
             type='email'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -24,9 +30,9 @@ const Login = () => {
           <label htmlFor='email'></label>
         </div>
 
-        <div className='input-field'>
-          <input
-            placeholder='Password'
+        <div className={style.inputField}>
+          <Input
+            placeholder={language.password}
             type='password'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -34,16 +40,16 @@ const Login = () => {
           <label htmlFor='email'></label>
         </div>
 
-        <button
-          className='waves-effect waves-light btn-large'
+        <Button
+          color='primary'
           onClick={(e) => {
             e.preventDefault();
             history.push('/');
             return dispatch(login(email, password));
           }}
         >
-          Login
-        </button>
+          {language.login}
+        </Button>
       </form>
     </div>
   );
