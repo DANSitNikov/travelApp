@@ -33,6 +33,10 @@ export interface CountryTypes {
   _id: string;
   name: string;
   capital: string;
+  capitalMarker: Array<Number>;
+  geo: any;
+  timezone: number;
+  currency: string;
   region: string;
   population: number;
   mainImage: string;
@@ -44,4 +48,12 @@ export interface CountryTypes {
     image: string;
   }>;
   __v?: number;
+}
+
+export interface LanguageTypes {
+  capital: string;
+  country: string;
+  searchCountry: string;
+  population: string;
+  region: string;
 }

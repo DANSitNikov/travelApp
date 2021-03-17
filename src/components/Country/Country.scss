@@ -1,6 +1,12 @@
 .countryPage {
     background-color: white;
-    padding-top: 30px;
+    padding-top: 8%;
+    min-height: calc(100vh - 20%);
+}
+
+.mapAndDesc {
+    padding-left: 50px;
+    width: 77%;
 }
 
 button {
@@ -12,14 +18,39 @@ button:focus {
     outline: none;
 }
 
+.loading {
+    width: 100%;
+    text-align: center;
+    height: 55vw;
+}
+
+.widgets {
+    height: 80px;
+    display: flex;
+    justify-content: space-around;
+    background: rgba(27, 27, 27, 0.7);
+}
+
+.countryFlex {
+    display: flex;
+    justify-content: space-between;
+}
+
 .countryName {
-    margin-bottom: 5%;
+    transform: rotateZ(180deg);
+    font-size: 9vw;
+    color: #6b7094;
+    position: absolute;
+    right: -7%;
+    top: 11vh;
+    writing-mode: vertical-rl;
 }
 
 .countryBody {
     margin: 0 auto;
     width: 80%;
     display: flex;
+    height: 100%;
 }
 
 .contentSelector {
@@ -27,6 +58,7 @@ button:focus {
     flex-direction: column;
     justify-content: space-between;
     height: 150px;
+    align-self: center;
 }
 
 .countryContent {
@@ -39,7 +71,7 @@ button:focus {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    margin-block: 50px;
+    margin-block: 25px;
 }
 
 .infoBlock {
@@ -47,22 +79,35 @@ button:focus {
     justify-content: space-between;
 }
 
-.countryInfo {
+// .countryInfo {
 
+// }
+
+.youtube {
+    margin: 100px auto;
+}
+
+.slider {
+    width: 68vw;
+    margin: 0 auto;
 }
 
 .countryInfo p {
     margin-bottom: 20px;
     border-left: 4px solid #00b7ff;
+    border-bottom: 4px solid #00b7ff;
+    border-radius: 5px;
     padding-left: 10px;
 }
 
 .countryPhoto {
-    width: 300px;
+    width: 35vw;
+    margin: 0 auto 25px;
+    border-radius: 5px;
 }
 
 .shortDesc {
-    width: 40%;
+    margin-bottom: 50px;
 }
 
 .attractions {
@@ -77,10 +122,8 @@ button:focus {
 }
 
 .attractionBlock {
-    margin-bottom: 50px;
-    padding: 10px;
-    border: 2px solid grey;
-    border-radius: 20px;
+    margin: 0;
+    padding: 25px 10px 10px 10px;
 }
 
 .attractionBlock img {

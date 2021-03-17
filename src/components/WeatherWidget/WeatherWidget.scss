@@ -1,0 +1,21 @@
+.weather_widget {
+    box-sizing: border-box;
+    height: 100%;
+    width: max-content;
+    color: white;
+    display: flex;
+    border: 3px double #00b7ff;
+    padding: 3px;
+    text-align: center;
+    align-self: center;
+    border-radius: 10px;
+    align-items: center;
+}
+
+.weather_info{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-left: 15px;
+}

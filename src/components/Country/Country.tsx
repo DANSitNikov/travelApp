@@ -8,68 +8,95 @@ import ReactPlayer from "react-player";
 import InfoIcon from '@material-ui/icons/Info';
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import PhotoSizeSelectActualIcon from '@material-ui/icons/PhotoSizeSelectActual';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Loader from './Loader'
+import CountryMap from '../CountryMap'
+import TimeWidget from '../TimeWidget'
+import WeatherWidet from '../WeatherWidget'
+import CurrencyWidget from '../CurrencyWidget'
 
 type ContentProps = {
-    type: number,
-    country: CountryTypes | undefined
+  type: number,
+  country: CountryTypes | undefined,
+  capitalTranslate: string,
+  regionTranslate: string,
+  populationTranslate: string,
 }
 
-const CountryContent = ({ type, country }: ContentProps) => {
-    console.log(country)
+const CountryContent = ({ type, country, capitalTranslate, regionTranslate, populationTranslate }: ContentProps) => {
     switch (type) {
-        case 1 : {
+        case 1: {
             return (
                 <div>
-                    <p>General info</p>
                     <div className='countryInfoBlock'>
-                        <div className='infoBlock'>
-                            <div className='countryInfo'>
-                                <p>Capital: {country?.capital}</p>
-                                <p>Population: {country?.population}</p>
-                                <p>Region: {country?.region}</p>
-                            </div>
-                            <div className='shortDesc'>
-                                {country?.shortDescription}
-                            </div>
-                        </div>
                         <img
                             src={country?.mainImage}
                             alt={country?.alpha3Code + ' photo'}
                             className='countryPhoto'
                         />
+                        <div className='infoBlock'>
+                            <div className='countryInfo'>
+                                <p>{capitalTranslate}: {country?.capital}</p>
+                                <p>{populationTranslate}: {country?.population}</p>
+                                <p>{regionTranslate}: {country?.region}</p>
+                            </div>
+                            <div className='mapAndDesc'>
+                                <div className='shortDesc'>
+                                    {country?.shortDescription}
+                                </div>
+                            </div>
+                        </div>
+                        <CountryMap capitalGeo={country?.capitalMarker} capitalName={country?.capital} countryGeo={country?.geo} />
                     </div>
                 </div>
             )
-            break;
         }
-        case 2 : {
+        case 2: {
             return (
-                <ReactPlayer
-                    url={country?.mainVideo}
-                    controls={true}
-                    volume={0.5}
-                />
-            )
-            break;
-        }
-        case 3 : {
-            return (
-                <div className='attractions'>
-                    {!country ? <div>Loading...</div> : <p></p>}
-                    {country?.attractions.map((elem, index) => {
-                        return (
-                            <div className='attractionBlock'>
-                                <div>
-                                    <p>{elem.title}</p>
-                                    <img src={elem.image} alt={elem.title + ' photo'}/>
-                                </div>
-                                <p>{elem.description}</p>
-                            </div>
-                        )
-                    })}
+                <div className='youtube'>
+                    <ReactPlayer
+                        url={country?.mainVideo}
+                        controls={true}
+                        volume={0.5}
+                        light={true}
+                        width={'50vw'}
+                        height={'28.12vw'}
+                    />
                 </div>
             )
-            break;
+        }
+        case 3: {
+            const settings = {
+                dots: true,
+                infinite: true,
+                speed: 500,
+                slidesToShow: 1,
+                slidesToScroll: 1
+            };
+            return (
+                <div>
+                    <div className='slider'>
+                        <Slider {...settings}>
+                            {country?.attractions.map((elem, index) => {
+                                return (
+                                    <div className='attractionBlock'>
+                                        <div>
+                                            <p style={{ marginBottom: '25px' }}>{elem.title}</p>
+                                            <img src={elem.image} alt={elem.title + ' photo'}
+                                                style={{ margin: '0 auto', width: '46vw' }}
+                                            />
+                                            <br />
+                                            <p>{elem.description}</p>
+                                        </div>
+                                    </div>
+                                )
+                            })}
+                        </Slider>
+                    </div>
+                </div>
+            )
         }
         default: {
             return (
@@ -81,15 +108,15 @@ const CountryContent = ({ type, country }: ContentProps) => {
 
 const Country: React.FC<any> = (props) => {
   const { code } = useParams<{ code: string }>();
-  const { changeVisibilityToFalse } = props;
+  const { changeVisibilityToFalse, language } = props;
 
   const [countryInfo, setCountryInfo] = useState<CountryTypes>();
 
   const countriesArray = useSelector((state: RootState) => {
-    return state.countries;
-  });
+        return state.countries;
+    });
 
-  const [content, setContent] = useState(1);
+    const [content, setContent] = useState(1);
 
   useEffect(() => {
     changeVisibilityToFalse();
@@ -103,23 +130,39 @@ const Country: React.FC<any> = (props) => {
     }
       console.log(currentCountry);
   }, [countriesArray, code]);
+
     return (
-    <div className='countryPage'>
-      <div className='countryBody'>
-          <div className='contentSelector'>
-              <button onClick={() => {setContent(1)}}><InfoIcon /></button>
-              <button onClick={() => {setContent(2)}}><PlayCircleOutlineIcon /></button>
-              <button onClick={() => {setContent(3)}}><PhotoSizeSelectActualIcon /></button>
-          </div>
-          <div className='countryContent'>
-              <h2 className='countryName'>
-                  {countryInfo ? ('This is ' + countryInfo.name) : 'Loading...'}.
-              </h2>
-              <CountryContent type={content} country={countryInfo}/>
-          </div>
-      </div>
-    </div>
-  );
+        <div className='countryPage'>
+            <div className='countryBody'>
+                <div className='contentSelector'>
+                    <button onClick={() => { setContent(1) }}><InfoIcon /></button>
+                    <button onClick={() => { setContent(2) }}><PlayCircleOutlineIcon /></button>
+                    <button onClick={() => { setContent(3) }}><PhotoSizeSelectActualIcon /></button>
+                </div>
+                {!countryInfo ?
+                    <Loader /> :
+                    <div className='countryContent'>
+                        <div className='widgets'>
+                            <TimeWidget offset={countryInfo.timezone} />
+                            <CurrencyWidget currency={countryInfo.currency} currencyTranslate={language.currency}/>
+                            <WeatherWidet city={countryInfo.capital} />
+                        </div>
+                        <h2 className='countryName'>
+                            {countryInfo && countryInfo.name.length <= 8 ? countryInfo.name : countryInfo?.alpha3Code}
+                        </h2>
+                        <div className='countryFlex'>
+                            <CountryContent
+                              type={content}
+                              country={countryInfo}
+                              capitalTranslate={language.capital}
+                              regionTranslate={language.region}
+                              populationTranslate={language.population}
+                            />
+                        </div>
+                    </div>}
+            </div>
+        </div>
+    );
 }
 
 export default Country;
