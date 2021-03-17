@@ -48,6 +48,7 @@ const SearchCountry: React.FC<any> = (props) => {
         type="text"
         autoFocus={true}
         placeholder={language.searchCountry}
+        className={style.inputSearch}
       />
 
       <IconButton

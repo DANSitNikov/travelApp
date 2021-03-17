@@ -1,0 +1,33 @@
+.button {
+
+  a{
+    color: white;
+    text-decoration: none;
+  }
+}
+
+.authed{
+  align-items: center;
+  justify-content: space-evenly;
+
+  p {
+    margin: 0;
+    color: white;
+    font-size: 14px;
+  }
+
+  @media (max-width: 600px) {
+    margin-top: 10px;
+  }
+}
+
+.notAuthed{
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 0 5px;
+  padding: 0 20px;
+
+  @media (max-width: 600px) {
+    margin-top: 10px;
+  }
+}
