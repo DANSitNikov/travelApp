@@ -1,0 +1,17 @@
+.weather_widget {
+    height: 100%;
+    width: max-content;
+    color: white;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    margin: 0 auto;
+
+    .weather_info{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        margin-left: 15px;
+    }
+}

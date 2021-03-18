@@ -13,10 +13,11 @@ type card = {
   countryCapital: string,
   image: string,
   alpha2Code: string,
-  shortDescription: string
+  shortDescription: string,
+  language: any,
 }
 
-const CountryCard = ({countryName, countryCapital, image, alpha2Code, shortDescription}: card) => {
+const CountryCard = ({countryName, countryCapital, image, alpha2Code, shortDescription, language}: card) => {
   return (
     <Card className={style.card}>
       <CardActionArea>
@@ -26,8 +27,8 @@ const CountryCard = ({countryName, countryCapital, image, alpha2Code, shortDescr
               {alpha2Code}
             </Avatar>
           }
-          title={`Country: ${countryName}`}
-          subheader={`Capital: ${countryCapital}`}
+          title={`${language.country}: ${countryName}`}
+          subheader={`${language.capital}: ${countryCapital}`}
         />
         <CardMedia
           className={style.countryImage}

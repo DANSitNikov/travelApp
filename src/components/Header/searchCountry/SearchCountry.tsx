@@ -8,6 +8,7 @@ import Paper from "@material-ui/core/Paper";
 import style from './SearchCountry.module.scss';
 
 const SearchCountry: React.FC<any> = (props) => {
+  const { language } = props;
   const inputValueLocal = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -46,7 +47,8 @@ const SearchCountry: React.FC<any> = (props) => {
         inputRef={inputValueLocal}
         type="text"
         autoFocus={true}
-        placeholder="search country"
+        placeholder={language.searchCountry}
+        className={style.inputSearch}
       />
 
       <IconButton

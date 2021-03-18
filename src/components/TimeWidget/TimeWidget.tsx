@@ -1,4 +1,4 @@
-import './TimeWidget.scss'
+import style from './TimeWidget.module.scss'
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../types'
@@ -75,7 +75,6 @@ const TimeWidget: React.FC<Props> = (props) => {
         }, 500)
         switch (lang) {
             case 'RU':
-                console.log('1')
                 setMonthDayNames({
                     monthNames: ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октяря', 'ноября', 'декабря'],
                     dayNames: ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота']
@@ -108,8 +107,8 @@ const TimeWidget: React.FC<Props> = (props) => {
 
 
     return (
-        <div className='time_widget_body'>
-            <div className='time'>
+        <div className={style.time_widget_body}>
+            <div className={style.time}>
                 {`${capitalTime.hours}:${capitalTime.minutes}:${capitalTime.seconds}`}
             </div>
             <div>

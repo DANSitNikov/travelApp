@@ -4,6 +4,7 @@ import {changeInputValue} from "../../../reducers/searchReducer";
 
 const mapStateToProps = (state: any) => ({
   inputValue: state.search.inputValue,
+  language: state.languages.data,
 });
 
 const SearchCountryContainer = connect(mapStateToProps, {

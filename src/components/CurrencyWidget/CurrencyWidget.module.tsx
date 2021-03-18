@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 
-import './CurrencyWidget.scss'
+import style from './CurrencyWidget.module.scss'
 
 interface Props {
-    currency: string
+    currency: string,
+    currencyTranslate: string,
 }
 
 interface Info {
@@ -13,7 +14,7 @@ interface Info {
 }
 
 const CurrencyWidget: React.FC<Props> = (props) => {
-    const [currencyInfo, setcurrencyInfo] = useState<Info>()
+    const [currencyInfo, setCurrencyInfo] = useState<Info>();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -31,30 +32,30 @@ const CurrencyWidget: React.FC<Props> = (props) => {
                             ? data.rates.RUB.toFixed(3)
                             : 1,
                     }
-                    setcurrencyInfo(infoForState)
+                    setCurrencyInfo(infoForState)
                 })
-
-
-            // console.log(data.json())
+                .catch(e => console.log(e))
         }
         fetchData()
     }, [props.currency])
 
     return (
-        <div className='currency_widget'>
+        <div className={style.currency_widget}>
             <table>
-                <tr>
-                    <td>Currency</td>
-                    <td>USD</td>
-                    <td>EUR</td>
-                    <td>RUB</td>
-                </tr>
-                <tr>
-                    <td>{props.currency}</td>
-                    <td>{currencyInfo?.USD}</td>
-                    <td>{currencyInfo?.EUR}</td>
-                    <td>{currencyInfo?.RUB}</td>
-                </tr>
+                <tbody>
+                    <tr>
+                        <td>{props.currencyTranslate}</td>
+                        <td>USD</td>
+                        <td>EUR</td>
+                        <td>RUB</td>
+                    </tr>
+                    <tr>
+                        <td>{props.currency}</td>
+                        <td>{currencyInfo?.USD}</td>
+                        <td>{currencyInfo?.EUR}</td>
+                        <td>{currencyInfo?.RUB}</td>
+                    </tr>
+                </tbody>
             </table>
         </div>
     )

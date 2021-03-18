@@ -1,22 +1,20 @@
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import SelectLang from './selectLang/SelectLang';
-import SearchCountryContainer from './searchCountry/searchCountryContainer';
-import Grid from '@material-ui/core/Grid';
+import React from "react";
+import {Link} from "react-router-dom";
+import SelectLang from "./selectLang/SelectLang";
+import SearchCountryContainer from "./searchCountry/searchCountryContainer";
+import Grid from "@material-ui/core/Grid";
 import style from './Header.module.scss';
 import Navbar from '../Navbar';
-import { useSelector } from 'react-redux';
 
-const Header = () => {
-  const isAuth = useSelector((state: any) => state.user.isAuth);
-  let user = useSelector((state: any) => state.user.currentUser);
+const Header: React.FC<any> = (props) => {
+  const { visibility } = props;
 
   return (
     <Grid container className={style.header}>
       <Grid
         container
         item
-        sm={6}
+        sm={4}
         xs={4}
         className={style.logoAndLang}
       >
@@ -34,17 +32,15 @@ const Header = () => {
           <SelectLang />
         </Grid>
       </Grid>
-      <Grid item sm={6} xs={8} className={style.selectItem}>
-        <SearchCountryContainer />
+      <Grid item sm={4} xs={8} className={style.selectItem}>
+        {visibility
+          ? <SearchCountryContainer />
+          : null
+        }
       </Grid>
-      <Navbar />
-      {isAuth === true && (
-        <h2>
-          {`Hello, ${
-            user.name.charAt(0).toUpperCase() + user.name.slice(1)
-          }`}
-        </h2>
-      )}
+      <Grid item xs={12} sm={4}>
+        <Navbar />
+      </Grid>
     </Grid>
   );
 };

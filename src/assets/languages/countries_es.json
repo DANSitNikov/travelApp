@@ -1,0 +1,16 @@
+{
+  "country": "País",
+  "capital": "Сapital",
+  "searchCountry": "búsqueda",
+  "population": "Población",
+  "region": "Región",
+  "currency": "Moneda",
+  "name": "Su nombre",
+  "email": "Su correo electrónico",
+  "password": "Contraseña",
+  "login": "Sesión",
+  "register": "Registrar",
+  "logout": "Salir",
+  "hello": "Hola",
+  "loading": "Сarga"
+}

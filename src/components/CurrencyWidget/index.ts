@@ -1,1 +1,1 @@
-export { default } from './CurrencyWidget'
+export { default } from './CurrencyWidget.module'

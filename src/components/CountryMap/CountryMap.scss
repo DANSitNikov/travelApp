@@ -2,13 +2,13 @@
     width: 100%;
     min-height: 400px;
     position: relative;
-    margin: 0 auto;
+    margin: 50px auto 0 auto;
 }
 
 .map_container{
     min-height: 400px;
-    height: 100%;
-    z-index: 5;
+    height: 80%;
+    z-index: 50;
 }
 
 .map_fullscreen_btn{
@@ -21,9 +21,9 @@
     justify-content: center;
     align-items: center;
     position: absolute;
-    top: -10px;
-    right: -10px;
-    z-index: 10;
+    top: 10px;
+    right: 40px;
+    z-index: 55;
 }
 
 .map_fullscreen_btn img{

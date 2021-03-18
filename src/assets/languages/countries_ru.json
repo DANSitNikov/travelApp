@@ -1,0 +1,16 @@
+{
+  "country": "Страна",
+  "capital": "Столица",
+  "searchCountry": "поиск",
+  "population": "Население",
+  "region": "регион",
+  "currency": "Валюта",
+  "name": "Ваше имя",
+  "email": "Ваш email",
+  "password": "Пароль",
+  "login": "Войти",
+  "register": "Регистрация",
+  "logout": "Выйти",
+  "hello": "Привет",
+  "loading": "Загрузка"
+}

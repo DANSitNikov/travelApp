@@ -21,6 +21,7 @@ export interface SetLanguage {
 export interface RootState {
   countries: Array<CountryTypes>;
   app: AppTypes;
+  languages: any;
 }
 
 export interface AppTypes {
@@ -48,4 +49,12 @@ export interface CountryTypes {
     image: string;
   }>;
   __v?: number;
+}
+
+export interface LanguageTypes {
+  capital: string;
+  country: string;
+  searchCountry: string;
+  population: string;
+  region: string;
 }

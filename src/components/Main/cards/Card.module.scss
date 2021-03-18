@@ -1,5 +1,12 @@
 .card {
   margin: 0 auto;
+  position: relative;
+  transition: 1s !important;
+
+  &:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 3px 3px #515151;
+  }
 
   .avatar {
     background-color: rgb(250, 0, 0);
@@ -10,7 +17,7 @@
   }
 
   .description{
-    max-height: 100px;
+    max-height: 90px;
     overflow: hidden;
     position: relative;
     margin: 0;
