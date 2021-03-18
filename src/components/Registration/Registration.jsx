@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { login, registration } from '../../actions/userActions';
+import { /* login, */ registration } from '../../actions/userActions';
 import style from './Registration.module.scss';
 import { useHistory } from 'react-router-dom';
 import { Button, TextField } from "@material-ui/core";
-import Input from "@material-ui/core/Input";
+// import Input from "@material-ui/core/Input";
 import { useSelector } from "react-redux";
-import { RootState } from "../../types";
+// import { RootState } from "../../types";
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 

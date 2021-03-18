@@ -20,11 +20,16 @@ const WeatherWidget: React.FC<weatherProps> = (props) => {
     useEffect(() => {
         async function getWeather() {
             const url = `https://api.openweathermap.org/data/2.5/weather?q=${props.city}&lang=${lang}&appid=55aa85f147056ca0778f19550850090c&units=metric`;
-            const res = await fetch(url);
-            const data = await res.json();
-            setWeatherIcon(`${data.weather[0].icon}`)
-            setTemperature(`${data.main.temp}`)
-            setWeatherDescription(`${data.weather[0].description}`)
+            try {
+                const res = await fetch(url);
+                const data = await res.json();
+                setWeatherIcon(`${data.weather[0].icon}`)
+                setTemperature(`${data.main.temp}`)
+                setWeatherDescription(`${data.weather[0].description}`)
+            } catch (e) {
+                console.error(e)
+            }
+
         }
         getWeather()
     }, [props.city, lang])

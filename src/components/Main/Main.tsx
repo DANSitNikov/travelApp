@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import CountryCard from "./cards/Card";
 import Grid from "@material-ui/core/Grid";
@@ -20,7 +20,7 @@ const Main: React.FC<any> = (props) => {
 
   const sortedCountriesArray = countriesArray.sort((a, b) => b.population - a.population);
 
-  const cards = sortedCountriesArray.map((card: {_id: string, name: string, capital: string, shortDescription: string, mainImage: string, alpha2Code: string, alpha3Code: string}) => {
+  const cards = sortedCountriesArray.map((card: { _id: string, name: string, capital: string, shortDescription: string, mainImage: string, alpha2Code: string, alpha3Code: string }) => {
     if (card.name.toLowerCase().includes(inputValue) || card.capital.toLowerCase().includes(inputValue) || card.name.toUpperCase().includes(inputValue) || card.capital.toUpperCase().includes(inputValue)) {
       return (
         <Grid key={card.alpha3Code} item xs={12} sm={6} md={4} className={style.card}>

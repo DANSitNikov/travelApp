@@ -18,7 +18,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     dispatch(auth());
-  }, []);
+  }, [dispatch]);
 
   return (
     <BrowserRouter>

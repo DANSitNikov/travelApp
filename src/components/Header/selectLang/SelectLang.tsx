@@ -1,10 +1,10 @@
-import React, {useEffect} from "react";
-import {FormControl, MenuItem, Select} from "@material-ui/core";
-import {useDispatch, useSelector} from "react-redux";
-import {Dispatch} from "redux";
-import {RootState} from "../../../types";
-import {fetchCountries} from "../../../actions/countriesActions";
-import {setLanguage} from "../../../actions/appActions";
+import React, { useEffect } from "react";
+import { FormControl, MenuItem, Select } from "@material-ui/core";
+import { useDispatch, useSelector } from "react-redux";
+import { Dispatch } from "redux";
+import { RootState } from "../../../types";
+import { fetchCountries } from "../../../actions/countriesActions";
+import { setLanguage } from "../../../actions/appActions";
 import style from './SelectLang.module.scss';
 import rus from '../../../assets/icons/russia.svg';
 import esp from '../../../assets/icons/spain.svg';
@@ -37,7 +37,7 @@ const SelectLang = () => {
         dispatch(fetchCountries('countries'));
         break;
     }
-  }, [lang]);
+  }, [lang, dispatch]);
 
   const handleLangChange = (
     event: React.ChangeEvent<{ value: unknown }>,
@@ -50,13 +50,13 @@ const SelectLang = () => {
     <FormControl className='Header__language-selector'>
       <Select className={style.select} value={lang} onChange={handleLangChange} displayEmpty>
         <MenuItem value={'EN'}>
-          <img width="20px" height="20px" src={uk} alt=""/>
+          <img width="20px" height="20px" src={uk} alt="" />
         </MenuItem>
         <MenuItem value={'RU'}>
-          <img width="20px" height="20px" src={rus} alt=""/>
+          <img width="20px" height="20px" src={rus} alt="" />
         </MenuItem>
         <MenuItem value={'ES'}>
-          <img width="20px" height="20px" src={esp} alt=""/>
+          <img width="20px" height="20px" src={esp} alt="" />
         </MenuItem>
       </Select>
     </FormControl>

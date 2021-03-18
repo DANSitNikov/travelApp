@@ -34,6 +34,7 @@ const CurrencyWidget: React.FC<Props> = (props) => {
                     }
                     setCurrencyInfo(infoForState)
                 })
+                .catch(e => console.log(e))
         }
         fetchData()
     }, [props.currency])

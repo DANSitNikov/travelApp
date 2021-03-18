@@ -5,7 +5,7 @@ import style from './Navbar.module.scss';
 import { logout } from '../../reducers/userReducer';
 import { Button } from '@material-ui/core';
 import Grid from "@material-ui/core/Grid";
-import {RootState} from "../../types";
+import { RootState } from "../../types";
 
 const Navbar = () => {
   const language = useSelector((state: RootState) => {
@@ -35,14 +35,13 @@ const Navbar = () => {
         <Grid container className={style.authed}>
           <Grid item sm={4}>
             <p>
-              {`${language.hello}, ${
-                user.name.charAt(0).toUpperCase() + user.name.slice(1)
-              }`}
+              {`${language.hello}, ${user.name.charAt(0).toUpperCase() + user.name.slice(1)
+                }`}
             </p>
           </Grid>
           <Grid item sm={4}>
             <Button variant="contained" color="secondary" size="small" className={style.button}>
-              <a onClick={() => dispatch(logout())}>{language.logout}</a>
+              <a href='/#' onClick={() => dispatch(logout())}>{language.logout}</a>
             </Button>
           </Grid>
         </Grid>
