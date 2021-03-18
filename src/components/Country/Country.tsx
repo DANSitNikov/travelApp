@@ -67,7 +67,6 @@ const CountryContent = ({ type, country, capitalTranslate, regionTranslate, popu
     }
     case 3: {
       const settings = {
-        dots: true,
         infinite: true,
         speed: 500,
         slidesToShow: 1,
@@ -81,7 +80,7 @@ const CountryContent = ({ type, country, capitalTranslate, regionTranslate, popu
                 return (
                   <div className={style.attractionBlock}>
                     <div>
-                      <p style={{ marginBottom: '25px' }}>{elem.title}</p>
+                      <h2 style={{ marginBottom: '25px' }}>{elem.title}</h2>
                       <img src={elem.image} alt={elem.title + ' photo'}
                         style={{ margin: '0 auto', width: '46vw' }}
                       />

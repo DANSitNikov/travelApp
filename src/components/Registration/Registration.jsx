@@ -18,6 +18,9 @@ const validationSchema = yup.object({
 		.string('Enter your password')
 		.min(8, 'Password should be of minimum 8 characters length')
 		.required('Password is required'),
+	name: yup
+		.string('Enter your name')
+		.required('Name is required'),
 });
 
 const Registration = () => {
@@ -64,8 +67,8 @@ const Registration = () => {
 						formik.handleChange(e);
 					}}
 
-					error={formik.touched.email && Boolean(formik.errors.email)}
-					helperText={formik.touched.email && formik.errors.email}
+					error={formik.touched.name && Boolean(formik.errors.name)}
+					helperText={formik.touched.name && formik.errors.name}
 				/>
 				<TextField
 					fullWidth
