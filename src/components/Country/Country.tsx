@@ -76,9 +76,9 @@ const CountryContent = ({ type, country, capitalTranslate, regionTranslate, popu
         <div className={style.sliderWrapper}>
           <div className={style.slider}>
             <Slider {...settings}>
-              {country?.attractions.map((elem) => {
+              {country?.attractions.map((elem, index) => {
                 return (
-                  <div className={style.attractionBlock}>
+                  <div className={style.attractionBlock} key={index}>
                     <div>
                       <h2 style={{ marginBottom: '25px' }}>{elem.title}</h2>
                       <img src={elem.image} alt={elem.title + ' photo'}
