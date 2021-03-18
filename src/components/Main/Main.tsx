@@ -30,7 +30,7 @@ const Main: React.FC<any> = (props) => {
         </Grid>
       );
     }
-    return;
+    return null;
   });
 
   return (
