@@ -50,13 +50,13 @@ const SelectLang = () => {
     <FormControl className='Header__language-selector'>
       <Select className={style.select} value={lang} onChange={handleLangChange} displayEmpty>
         <MenuItem value={'EN'}>
-          <img src={uk} alt=""/>
+          <img width="20px" height="20px" src={uk} alt=""/>
         </MenuItem>
         <MenuItem value={'RU'}>
-          <img src={rus} alt=""/>
+          <img width="20px" height="20px" src={rus} alt=""/>
         </MenuItem>
         <MenuItem value={'ES'}>
-          <img src={esp} alt=""/>
+          <img width="20px" height="20px" src={esp} alt=""/>
         </MenuItem>
       </Select>
     </FormControl>
