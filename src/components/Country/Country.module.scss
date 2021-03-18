@@ -47,6 +47,7 @@
             margin: 30px auto;
             padding: 15px;
             max-width: 1000px;
+            column-gap: 20px;
 
             .widgets {
                 background: rgba(27, 27, 27, 0.7);
@@ -64,13 +65,13 @@
             }
 
             .countryName {
-                font-size: 9vw;
+                font-size: 8.5vw;
                 color: #6b7094;
                 margin: 0;
                 text-align: center;
 
-                @media (min-width: 1250px) {
-                    font-size: 100px;
+                @media (min-width: 1050px) {
+                    font-size: 90px;
                 }
 
                 @media (max-width: 600px) {

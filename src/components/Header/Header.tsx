@@ -7,8 +7,13 @@ import style from './Header.module.scss';
 import Navbar from '../Navbar';
 import {useSelector} from "react-redux";
 import {RootState} from "../../types";
+import searchReducer from "../../reducers/searchReducer";
 
-const Header = () => {
+const Header: React.FC<any> = (props) => {
+  const { visibility } = props;
+
+  console.log(visibility);
+
   return (
     <Grid container className={style.header}>
       <Grid
@@ -33,7 +38,10 @@ const Header = () => {
         </Grid>
       </Grid>
       <Grid item sm={4} xs={8} className={style.selectItem}>
-        <SearchCountryContainer />
+        {visibility
+          ? <SearchCountryContainer />
+          : null
+        }
       </Grid>
       <Grid xs={12} sm={4}>
         <Navbar />

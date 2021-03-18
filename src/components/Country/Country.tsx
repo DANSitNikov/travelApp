@@ -117,6 +117,7 @@ const Country: React.FC<any> = (props) => {
   const [content, setContent] = useState(1);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     changeVisibilityToFalse();
     const currentCountry:
       | CountryTypes
