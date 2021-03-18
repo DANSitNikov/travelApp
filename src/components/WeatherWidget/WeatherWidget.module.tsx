@@ -22,7 +22,6 @@ const WeatherWidget: React.FC<weatherProps> = (props) => {
             const url = `https://api.openweathermap.org/data/2.5/weather?q=${props.city}&lang=${lang}&appid=55aa85f147056ca0778f19550850090c&units=metric`;
             const res = await fetch(url);
             const data = await res.json();
-            console.log(data.weather);
             setWeatherIcon(`${data.weather[0].icon}`)
             setTemperature(`${data.main.temp}`)
             setWeatherDescription(`${data.weather[0].description}`)

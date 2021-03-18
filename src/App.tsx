@@ -20,8 +20,6 @@ const App: React.FC = () => {
     dispatch(auth());
   }, []);
 
-  console.log(isAuth);
-
   return (
     <BrowserRouter>
       <div className={style.app}>

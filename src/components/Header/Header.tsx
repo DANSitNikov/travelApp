@@ -5,14 +5,9 @@ import SearchCountryContainer from "./searchCountry/searchCountryContainer";
 import Grid from "@material-ui/core/Grid";
 import style from './Header.module.scss';
 import Navbar from '../Navbar';
-import {useSelector} from "react-redux";
-import {RootState} from "../../types";
-import searchReducer from "../../reducers/searchReducer";
 
 const Header: React.FC<any> = (props) => {
   const { visibility } = props;
-
-  console.log(visibility);
 
   return (
     <Grid container className={style.header}>
@@ -43,7 +38,7 @@ const Header: React.FC<any> = (props) => {
           : null
         }
       </Grid>
-      <Grid xs={12} sm={4}>
+      <Grid item xs={12} sm={4}>
         <Navbar />
       </Grid>
     </Grid>

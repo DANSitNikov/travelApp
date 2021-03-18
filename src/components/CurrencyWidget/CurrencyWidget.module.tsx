@@ -41,18 +41,20 @@ const CurrencyWidget: React.FC<Props> = (props) => {
     return (
         <div className={style.currency_widget}>
             <table>
-                <tr>
-                    <td>{props.currencyTranslate}</td>
-                    <td>USD</td>
-                    <td>EUR</td>
-                    <td>RUB</td>
-                </tr>
-                <tr>
-                    <td>{props.currency}</td>
-                    <td>{currencyInfo?.USD}</td>
-                    <td>{currencyInfo?.EUR}</td>
-                    <td>{currencyInfo?.RUB}</td>
-                </tr>
+                <tbody>
+                    <tr>
+                        <td>{props.currencyTranslate}</td>
+                        <td>USD</td>
+                        <td>EUR</td>
+                        <td>RUB</td>
+                    </tr>
+                    <tr>
+                        <td>{props.currency}</td>
+                        <td>{currencyInfo?.USD}</td>
+                        <td>{currencyInfo?.EUR}</td>
+                        <td>{currencyInfo?.RUB}</td>
+                    </tr>
+                </tbody>
             </table>
         </div>
     )

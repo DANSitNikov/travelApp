@@ -1,7 +1,7 @@
 {
   "country": "Страна",
   "capital": "Столица",
-  "searchCountry": "искать страну",
+  "searchCountry": "поиск",
   "population": "Население",
   "region": "регион",
   "currency": "валюта",
@@ -11,5 +11,6 @@
   "login": "Войти",
   "register": "Регистрация",
   "logout": "Выйти",
-  "hello": "Привет"
+  "hello": "Привет",
+  "loading": "Загрузка"
 }

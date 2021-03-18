@@ -1,7 +1,7 @@
 {
   "country": "País",
   "capital": "Сapital",
-  "searchCountry": "encontrar un país",
+  "searchCountry": "búsqueda",
   "population": "Población",
   "region": "Región",
   "currency": "Moneda",
@@ -11,5 +11,6 @@
   "login": "Sesión",
   "register": "Registrar",
   "logout": "Salir",
-  "hello": "Hola"
+  "hello": "Hola",
+  "loading": "Сarga"
 }

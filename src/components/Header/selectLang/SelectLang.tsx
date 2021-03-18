@@ -17,6 +17,11 @@ const SelectLang = () => {
     return state.app.lang;
   });
 
+  if (localStorage && localStorage.getItem('language')) {
+    const setLang = localStorage.getItem('language');
+    if (setLang !== null) dispatch(setLanguage(JSON.parse(setLang)))
+  }
+
   useEffect(() => {
     switch (lang) {
       case 'EN':
@@ -32,7 +37,7 @@ const SelectLang = () => {
         dispatch(fetchCountries('countries'));
         break;
     }
-  }, [lang, dispatch]);
+  }, [lang]);
 
   const handleLangChange = (
     event: React.ChangeEvent<{ value: unknown }>,
@@ -40,11 +45,6 @@ const SelectLang = () => {
     localStorage.setItem('language', JSON.stringify(event.target.value as string));
     dispatch(setLanguage(event.target.value as string));
   };
-
-  if (localStorage && localStorage.getItem('language')) {
-    const setLang = localStorage.getItem('language');
-    if (setLang !== null) dispatch(setLanguage(JSON.parse(setLang)))
-  }
 
   return (
     <FormControl className='Header__language-selector'>

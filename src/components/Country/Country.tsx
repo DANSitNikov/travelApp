@@ -127,7 +127,6 @@ const Country: React.FC<any> = (props) => {
     if (currentCountry) {
       setCountryInfo(currentCountry);
     }
-    console.log(currentCountry);
   }, [countriesArray, code]);
 
   return (
@@ -139,7 +138,7 @@ const Country: React.FC<any> = (props) => {
             <Button size="small" variant="contained" color="primary" onClick={() => { setContent(3) }}><PhotoSizeSelectActualIcon /></Button>
         </div>
         {!countryInfo ?
-          <Loader/> :
+          <Loader /> :
           <Grid className={style.countryContent}>
             <Grid container item xs={12} className={style.countryContentBase}>
               <Grid item sm={4} xs={12}>
