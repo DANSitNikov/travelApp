@@ -1,9 +1,13 @@
+import {SearchActionType} from "../actions/searchAction";
+
 const initialState = {
-  inputValue: '',
-  visibility: true,
+  inputValue: '' as string,
+  visibility: true as boolean,
 };
 
-const searchReducer = (state = initialState, action: any) => {
+type InitialState = typeof initialState;
+
+const searchReducer = (state = initialState, action: SearchActionType): InitialState => {
   switch (action.type) {
     case 'CHANGE_INPUT_VALUE':
       return {
@@ -24,18 +28,5 @@ const searchReducer = (state = initialState, action: any) => {
       return state;
   }
 };
-
-export const changeInputValue = (value: string) => ({
-  type: 'CHANGE_INPUT_VALUE',
-  value,
-});
-
-export const changeVisibilityToFalse = () => ({
-  type: 'CHANGE_VISIBILITY_TO_FALSE',
-});
-
-export const changeVisibilityToTrue = () => ({
-  type: 'CHANGE_VISIBILITY_TO_TRUE',
-});
 
 export default searchReducer;

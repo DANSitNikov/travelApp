@@ -1,12 +1,17 @@
+import { User } from "../types";
+
 const SET_USER = 'SET_USER';
 const LOGOUT = 'LOGOUT';
 
 const initialState = {
-  currentUser: {},
-  isAuth: false,
+  currentUser: {} as User,
+  isAuth: false as boolean,
 };
 
-const usersReducer = (state = initialState, action: any) => {
+type InitialState = typeof initialState;
+
+const usersReducer = (state = initialState, action: any): InitialState => {
+  console.log(state.currentUser, ' cur ');
   switch (action.type) {
     case SET_USER:
       return {
@@ -26,7 +31,7 @@ const usersReducer = (state = initialState, action: any) => {
   }
 };
 
-export const setUser = (user: any) => ({
+export const setUser = (user: User) => ({
   type: SET_USER,
   payload: user,
 });

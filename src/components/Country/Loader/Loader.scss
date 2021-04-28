@@ -1,6 +1,8 @@
 .loadingBlock {
   margin: 0 auto;
   padding-top: 25%;
+  text-align: center;
+  color: white;
 }
 
 .loadingText {
@@ -31,7 +33,6 @@
 .spinner {
   --animation-duration: 1150ms;
   position: relative;
-  left: 10px;
 
   .spinner-item {
     --item-size: calc(var(--size) / 4);

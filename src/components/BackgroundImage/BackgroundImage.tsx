@@ -4,7 +4,7 @@ import balloons from '../../assets/defaultBack/hot-air-baloons.jpg';
 import plain from '../../assets/defaultBack/plain.jpg';
 import human from '../../assets/defaultBack/human.jpg';
 import friends from '../../assets/defaultBack/friends.jpg';
-import {useEffect, useRef} from "react";
+import React, {useEffect, useRef} from "react";
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -49,9 +49,9 @@ const chooseImage = (): number => {
   return Math.floor(Math.random() * 4);
 };
 
-const BackgroundImage = () => {
+const BackgroundImage: React.FC = () => {
   const classes = useStyles();
-  const backImg = useRef<HTMLDivElement>(null);
+  const backImg = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const number: number = chooseImage();

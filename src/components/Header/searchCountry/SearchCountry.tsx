@@ -6,10 +6,13 @@ import IconButton from "@material-ui/core/IconButton";
 import Divider from "@material-ui/core/Divider";
 import Paper from "@material-ui/core/Paper";
 import style from './SearchCountry.module.scss';
+import {useDispatch} from "react-redux";
+import searchAction from "../../../actions/searchAction";
 
 const SearchCountry: React.FC<any> = (props) => {
   const { language } = props;
   const inputValueLocal = useRef<HTMLInputElement>(null);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const keyboardHandler = (e: KeyboardEvent) => {
@@ -29,13 +32,13 @@ const SearchCountry: React.FC<any> = (props) => {
   const cleanContent = () => {
     if (inputValueLocal && inputValueLocal.current) {
       inputValueLocal.current.value = '';
-      props.changeInputValue(inputValueLocal.current.value);
+      dispatch(searchAction.changeInputValue(inputValueLocal.current.value));
     }
   };
 
   const searchCountry = () => {
     if (inputValueLocal && inputValueLocal.current) {
-      props.changeInputValue(inputValueLocal.current.value.toLowerCase());
+      searchAction.changeInputValue(inputValueLocal.current.value.toLowerCase());
     }
   };
 

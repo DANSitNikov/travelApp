@@ -2,9 +2,9 @@ import axios from 'axios';
 import { setUser } from '../reducers/userReducer';
 
 export const registration = async (
-  email: any,
-  password: any,
-  name: any,
+  email: string,
+  password: string,
+  name: string,
 ) => {
   try {
     await axios.post(

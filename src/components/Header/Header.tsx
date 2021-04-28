@@ -6,7 +6,11 @@ import Grid from "@material-ui/core/Grid";
 import style from './Header.module.scss';
 import Navbar from '../Navbar';
 
-const Header: React.FC<any> = (props) => {
+interface Props {
+  visibility: boolean
+}
+
+const Header: React.FC<Props> = (props) => {
   const { visibility } = props;
 
   return (

@@ -2,7 +2,7 @@ import React from 'react';
 import style from './Country.module.scss';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import { CountryTypes, RootState } from '../../types';
 import ReactPlayer from "react-player";
 import InfoIcon from '@material-ui/icons/Info';
@@ -18,6 +18,7 @@ import WeatherWidet from '../WeatherWidget'
 import CurrencyWidget from '../CurrencyWidget'
 import { Grid } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
+import searchAction from "../../actions/searchAction";
 
 type ContentProps = {
   type: number,
@@ -105,19 +106,20 @@ const CountryContent = ({ type, country, capitalTranslate, regionTranslate, popu
 
 const Country: React.FC<any> = (props) => {
   const { code } = useParams<{ code: string }>();
-  const { changeVisibilityToFalse, language } = props;
-
+  const { language } = props;
   const [countryInfo, setCountryInfo] = useState<CountryTypes>();
-
   const countriesArray = useSelector((state: RootState) => {
     return state.countries;
   });
-
   const [content, setContent] = useState(1);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(searchAction.changeVisibilityToFalse());
+  }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    changeVisibilityToFalse();
     const currentCountry:
       | CountryTypes
       | undefined = countriesArray.find((el: CountryTypes) => {
@@ -126,7 +128,7 @@ const Country: React.FC<any> = (props) => {
     if (currentCountry) {
       setCountryInfo(currentCountry);
     }
-  }, [countriesArray, code, changeVisibilityToFalse]);
+  }, [countriesArray, code]);
 
   return (
     <div className={style.countryPage}>

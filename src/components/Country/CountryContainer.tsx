@@ -1,13 +1,11 @@
 import {connect} from "react-redux";
 import Country from "./Country";
-import {changeVisibilityToFalse} from "../../reducers/searchReducer";
+import {GlobalState} from "../../reducers/rootReducer";
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: GlobalState) => ({
   language: state.languages.data,
 });
 
-const CountryContainer = connect(mapStateToProps, {
-  changeVisibilityToFalse
-})(Country);
+const CountryContainer = connect(mapStateToProps, null)(Country);
 
 export default CountryContainer;
